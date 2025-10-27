@@ -9,7 +9,7 @@ export default function GuestPage() {
 
   return (
     <div style={{ textAlign: "center", marginTop: "50px" }}>
-      <h1>ようこそ、{guest.name} 様</h1>
+      <h1>ようこそ<br/>{guest.name} 様</h1>
       <p>席番号: {guest.seatNumber}</p>
       <p>{guest.message}</p>
 
