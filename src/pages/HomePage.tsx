@@ -6,7 +6,7 @@ export default function HomePage() {
       <h1>結婚式ゲスト用ページ</h1>
       <p>招待状のQRコードを読み取ると、個別ページが開きます!</p>
       <p>テストリンク:</p>
-      <Link to="/guest/abc123">山田太郎のページへ</Link>
+      <Link to="/guest/abc123">山田太郎さんのページへ</Link>
     </div>
   );
 }
