@@ -6,7 +6,8 @@ export default function HomePage() {
       <h1>結婚式ゲスト用ページ</h1>
       <p>本日はお越しいただきありがとうございます！</p>
       <p>テストリンク:</p>
-      <Link to="/guest/abc123">山田太郎さんのページへ</Link>
+      <Link to="/guest/login">Weddingページへ</Link>
+      <Link to="/reception/TH01">Receptionページへ</Link>
     </div>
   );
 }
