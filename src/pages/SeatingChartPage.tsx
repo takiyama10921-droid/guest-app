@@ -16,7 +16,7 @@ function SeatingChartPage() {
       <button
         onClick={() => navigate(-1)}
         style={{
-          position: "absolute",
+          position: "fixed",
           top: "20px",
           left: "20px",
           padding: "8px 16px",
@@ -24,6 +24,7 @@ function SeatingChartPage() {
           backgroundColor: "#ccc",
           border: "none",
           cursor: "pointer",
+          zIndex: 10000,
         }}
       >
         ← 戻る

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 const photoLinks = [
   "/photos/IMG_6482.jpg",
   "/photos/m4BOCvyqQ5apQPqzuOq09Q.jpg",
+  "/photos/IMG_6331.jpg",
 ];
 
 const PhotoGalleryPage: React.FC = () => {
@@ -13,34 +14,37 @@ const PhotoGalleryPage: React.FC = () => {
   const [modalUrl, setModalUrl] = useState<string | null>(null);
 
   return (
-    <div style={{ textAlign: "center", position: "relative" }}>
+    <div style={{ textAlign: 'center', position: 'relative' }}>
       {/* 戻る */}
       <button
         onClick={() => navigate(-1)}
         style={{
-          position: "fixed",
-          top: "20px",
-          left: "20px",
-          padding: "8px 16px",
-          borderRadius: "6px",
-          backgroundColor: "#ccc",
-          border: "none",
-          cursor: "pointer",
+          position: 'fixed',
+          top: '20px',
+          left: '20px',
+          padding: '8px 16px',
+          borderRadius: '6px',
+          backgroundColor: '#ccc',
+          border: 'none',
+          cursor: 'pointer',
           zIndex: 10000,
         }}
       >
         ← 戻る
       </button>
 
-      <h2 style={{ marginBottom: "20px" }}>📸 写真ギャラリー</h2>
+      <h2 style={{ marginBottom: '20px' }}>📸 写真ギャラリー</h2>
 
       {/* ギャラリー */}
       <div
         style={{
-          display: "flex",
-          gap: "10px",
-          flexWrap: "wrap",
-          justifyContent: "center",
+          display: 'grid',
+          gridTemplateColumns: 'repeat(3, 1fr)', // ★ 3列固定
+          gap: '10px',
+          width: '100%',
+          maxWidth: '600px', // 必要であれば（横画面でも可）
+          margin: '0 auto',
+          padding: '0 10px',
         }}
       >
         {photoLinks.map((url, i) => (
@@ -49,12 +53,12 @@ const PhotoGalleryPage: React.FC = () => {
             src={url}
             alt=""
             style={{
-              width: "150px",
-              height: "150px",
-              borderRadius: "12px",
-              objectFit: "cover",
-              cursor: "pointer",
-              boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
+              width: '100%', // ★ grid の 1fr に合わせる
+              aspectRatio: '1/1', // ★ 正方形にする
+              borderRadius: '12px',
+              objectFit: 'cover',
+              cursor: 'pointer',
+              boxShadow: '0 2px 6px rgba(0,0,0,0.2)',
             }}
             onClick={() => setModalUrl(url)}
           />
@@ -66,15 +70,15 @@ const PhotoGalleryPage: React.FC = () => {
         <div
           onClick={() => setModalUrl(null)}
           style={{
-            position: "fixed",
+            position: 'fixed',
             top: 0,
             left: 0,
-            width: "100vw",
-            height: "100vh",
-            background: "rgba(0,0,0,0.8)",
-            display: "flex",
-            alignItems: "center",
-            justifyContent: "center",
+            width: '100vw',
+            height: '100vh',
+            background: 'rgba(0,0,0,0.8)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
             zIndex: 9999,
           }}
         >
@@ -82,9 +86,9 @@ const PhotoGalleryPage: React.FC = () => {
             src={modalUrl}
             alt=""
             style={{
-              maxWidth: "90%",
-              maxHeight: "90%",
-              borderRadius: "12px",
+              maxWidth: '90%',
+              maxHeight: '90%',
+              borderRadius: '12px',
             }}
           />
         </div>

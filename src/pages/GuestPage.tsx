@@ -57,6 +57,9 @@ export default function GuestApp() {
   const handleOpenPhoto = () => {
     navigate("/photo");
   };
+  const handleOpenTimeline = () => {
+    navigate("/timeline");
+  };
 
   if (loading) {
     return <p style={{ textAlign: "center", marginTop: "60px" }}>読み込み中...</p>;
@@ -128,7 +131,7 @@ export default function GuestApp() {
       >
         <button onClick={handleOpenSeating}>席次表</button>
         <button onClick={handleOpenMenu}>メニュー</button>
-        <button>タイムスケジュール</button>
+        <button onClick={handleOpenTimeline}>タイムスケジュール</button>
         <button onClick={handleOpenPhoto}>フォトギャラリー</button>
         <button>プロフィール</button>
         <button>会場案内</button>

@@ -6,6 +6,7 @@ import SeatingChartPage from "./pages/SeatingChartPage";
 import { GuestProvider } from "./context/GuestContext";
 import MenuPage from "./pages/MenuPage";
 import PhotoGalleryPage from "./pages/PhotoGalleryPage";
+import TimelinePage from "./pages/TimelinePage";
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
           <Route path="/seating" element={<SeatingChartPage />} />
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/photo" element={<PhotoGalleryPage />} />
+          <Route path="/timeline" element={<TimelinePage />} />
         </Routes>
       </Router>
     </GuestProvider>
