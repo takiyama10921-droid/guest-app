@@ -4,8 +4,8 @@ import Header from "../components/Header";
 const VenueInfoPage: React.FC = () => {
 
   // 必要ならここで実データやフラグを受け取れるように props に切り出して下さい
-  const photoShareUrl = "https://example.com/photo-share"; // あとで差し替え
-  const venueMapUrl = "/photos/venue_map.jpg"; // 会場マップ画像パス
+  // const photoShareUrl = "https://example.com/photo-share"; // あとで差し替え
+  // const venueMapUrl = "/photos/venue_map.jpg"; // 会場マップ画像パス
 
   return (
     <div style={{ paddingTop: "80px" }}>
