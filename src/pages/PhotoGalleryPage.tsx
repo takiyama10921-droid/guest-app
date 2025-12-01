@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 // ローカル写真フォルダの画像
 const photoLinks = [
@@ -9,32 +9,11 @@ const photoLinks = [
 ];
 
 const PhotoGalleryPage: React.FC = () => {
-  const navigate = useNavigate();
-
   const [modalUrl, setModalUrl] = useState<string | null>(null);
 
   return (
-    <div style={{ textAlign: 'center', position: 'relative' }}>
-      {/* 戻る */}
-      <button
-        onClick={() => navigate(-1)}
-        style={{
-          position: 'fixed',
-          top: '20px',
-          left: '20px',
-          padding: '8px 16px',
-          borderRadius: '6px',
-          backgroundColor: '#ccc',
-          border: 'none',
-          cursor: 'pointer',
-          zIndex: 10000,
-        }}
-      >
-        ← 戻る
-      </button>
-
-      <h2 style={{ marginBottom: '20px' }}>📸 写真ギャラリー</h2>
-
+    <div>
+      <Header title="📸 写真ギャラリー" />
       {/* ギャラリー */}
       <div
         style={{
@@ -73,7 +52,7 @@ const PhotoGalleryPage: React.FC = () => {
             position: 'fixed',
             top: 0,
             left: 0,
-            width: '100vw',
+            width: '99vw',
             height: '100vh',
             background: 'rgba(0,0,0,0.8)',
             display: 'flex',

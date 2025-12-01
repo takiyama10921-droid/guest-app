@@ -1,82 +1,59 @@
 // src/pages/GuestApp.tsx
-import { useEffect, useState } from "react";
-import { collection, onSnapshot } from "firebase/firestore";
-import { db } from "../firebase";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGuest } from "../context/GuestContext";
-import type { User } from "../types/User";
 
 export default function GuestApp() {
   const [inputCode, setInputCode] = useState("");
   const [message, setMessage] = useState("");
-  const [guestList, setGuestList] = useState<User[]>([]);
-  const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
   const { guest, setGuest } = useGuest();
 
-  // Firestore監視
-  useEffect(() => {
-    const unsubscribe = onSnapshot(collection(db, "guest"), (snapshot) => {
-      const users = snapshot.docs.map((doc) => ({
-        id: doc.id,
-        ...(doc.data() as Omit<User, "id">),
-      }));
-      setGuestList(users);
-      setLoading(false);
+  // ▼ 修正：固定コードでログイン
+  const handleLogin = () => {
+    if (inputCode !== "0926") {
+      setMessage("※ コードが間違っています");
+      return;
+    }
+
+    // ▼ 修正：ダミー共通ゲストをセット
+    setGuest({
+      id: "common",
+      name: "ゲスト",
+      seatNumber: "-",
+      message: "",
+      checkedin: true,
+      code: "0926",
+      hasTransportationGift: false,
+      giftReceivedBefore: false,
+      side: "groom"
     });
 
-    return () => unsubscribe();
-  }, []);
-
-  const handleLogin = () => {
-    const found = guestList.find(
-      (g) => g.code.toUpperCase() === inputCode.toUpperCase()
-    );
-
-    if (!found) {
-      setMessage("※ コードが間違っている可能性があります");
-      return;
-    }
-
-    if (!found.checkedin) {
-      setGuest(null);
-      setMessage("受付がまだ完了していません。受付を済ませてから再度お試しください。");
-      return;
-    }
-
     setMessage("");
-    setGuest(found);
   };
 
-  const handleOpenSeating = () => {
-    navigate("/seating");
-  };
-  const handleOpenMenu = () => {
-    navigate("/menu");
-  };
-  const handleOpenPhoto = () => {
-    navigate("/photo");
-  };
-  const handleOpenTimeline = () => {
-    navigate("/timeline");
-  };
-
-  if (loading) {
-    return <p style={{ textAlign: "center", marginTop: "60px" }}>読み込み中...</p>;
-  }
+  // ページ遷移
+  const handleOpenSeating = () => navigate("/seating");
+  const handleOpenMenu = () => navigate("/menu");
+  const handleOpenPhoto = () => navigate("/photo");
+  const handleOpenPhotoUpload = () => navigate("/photoUpload");
+  const handleOpenProfile = () => navigate("/profile");
+  const handleOpenVenueInfo = () => navigate("/venueInfo");
+  const handleOpenVenueMap = () => navigate("/venueMap");
+  const handleOpenMessage = () => navigate("/message");
 
   // ログイン前
   if (!guest) {
     return (
       <div style={{ textAlign: "center", marginTop: "60px" }}>
         <h1>ようこそ！</h1>
-        <p>受付で係の方から提示されたコードを入力してください</p>
+        <p>QRの下にあるコードを入力してください</p>
 
         <input
           type="text"
           value={inputCode}
           onChange={(e) => setInputCode(e.target.value)}
-          placeholder="例: ST01"
+          placeholder="例:0926"
           style={{
             fontSize: "1.2em",
             padding: "5px 10px",
@@ -101,7 +78,7 @@ export default function GuestApp() {
         {message && (
           <p
             style={{
-              color: message.includes("受付") ? "red" : "gray",
+              color: "red",
               marginTop: "10px",
             }}
           >
@@ -116,8 +93,6 @@ export default function GuestApp() {
   return (
     <div style={{ textAlign: "center", marginTop: "40px" }}>
       <h1>ようこそ<br />{guest.name} 様！</h1>
-      <p>席番号: {guest.seatNumber}</p>
-      <p>{guest.message}</p>
 
       <div
         style={{
@@ -131,13 +106,13 @@ export default function GuestApp() {
       >
         <button onClick={handleOpenSeating}>席次表</button>
         <button onClick={handleOpenMenu}>メニュー</button>
-        <button onClick={handleOpenTimeline}>タイムスケジュール</button>
+        <button onClick={handleOpenPhotoUpload}>写真アップロード</button>
         <button onClick={handleOpenPhoto}>フォトギャラリー</button>
-        <button>プロフィール</button>
-        <button>会場案内</button>
-        <button>ご案内/注意事項</button>
-        <button>メッセージか、寄せ書き？</button>
-        <button>今日の見どころ</button>
+        <button onClick={handleOpenProfile}>プロフィール</button>
+        <button onClick={handleOpenVenueInfo}>ご案内/注意事項</button>
+        <button onClick={handleOpenVenueMap}>会場内MAP</button>
+        <button onClick={handleOpenMessage}>メッセージ投稿</button>
+        <button>？</button>
       </div>
 
       <div style={{ marginTop: "30px" }}>

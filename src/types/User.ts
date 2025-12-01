@@ -1,7 +1,7 @@
 export interface User {
   id?: string;  // FirestoreのドキュメントID
   name: string;
-  seatNumber: number;
+  seatNumber: string;
   message: string;
   code: string;
   checkedin: boolean;
@@ -9,4 +9,5 @@ export interface User {
   hasTransportationGift: boolean;
   //ご祝儀事前受取済みか
   giftReceivedBefore: boolean;
+  side: "groom" | "bride";
 }

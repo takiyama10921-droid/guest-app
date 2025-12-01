@@ -7,6 +7,12 @@ import { GuestProvider } from "./context/GuestContext";
 import MenuPage from "./pages/MenuPage";
 import PhotoGalleryPage from "./pages/PhotoGalleryPage";
 import TimelinePage from "./pages/TimelinePage";
+import ProfilePage from "./pages/ProfilePage";
+import VenueInfoPage from "./pages/VenueInfoPage";
+import VenueMapPage from "./pages/VenueMapPage";
+import MessagePage from "./pages/MessagePage";
+import PhotoUploadPage from "./pages/PhotoUploadPage";
+import MessageListPage from "./pages/MessageListPage";
 
 function App() {
   return (
@@ -20,6 +26,12 @@ function App() {
           <Route path="/menu" element={<MenuPage />} />
           <Route path="/photo" element={<PhotoGalleryPage />} />
           <Route path="/timeline" element={<TimelinePage />} />
+          <Route path="/profile" element={<ProfilePage />} />
+          <Route path="/venueInfo" element={<VenueInfoPage />} />
+          <Route path="/venueMap" element={<VenueMapPage />} />
+          <Route path="/message" element={<MessagePage />} />
+          <Route path="/photoUpload" element={<PhotoUploadPage />} />
+          <Route path="/messageList" element={<MessageListPage />} />
         </Routes>
       </Router>
     </GuestProvider>

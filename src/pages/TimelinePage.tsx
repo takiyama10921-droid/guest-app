@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router-dom";
+import Header from "../components/Header";
 
 const schedule = [
   { time: "12:00", event: "受付開始" },
@@ -12,55 +12,54 @@ const schedule = [
 ];
 
 const TimelinePage: React.FC = () => {
-  const navigate = useNavigate();
 
   return (
-    <div style={{ textAlign: "center", position: "relative", paddingBottom: "40px" }}>
-      {/* 戻るボタン */}
-      <button
-        onClick={() => navigate(-1)}
+    <div>
+      <Header title="🕒 タイムスケジュール" />
+      {/* タイムライン */}
+      <div
         style={{
-          position: "fixed",
-          top: "20px",
-          left: "20px",
-          padding: "8px 16px",
-          borderRadius: "6px",
-          backgroundColor: "#ccc",
-          border: "none",
-          cursor: "pointer",
-          zIndex: 10000,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          gap: '20px',
         }}
       >
-        ← 戻る
-      </button>
-
-      <h2 style={{ marginBottom: "20px" }}>🕒 タイムスケジュール</h2>
-
-      {/* タイムライン */}
-      <div style={{ display: "flex", flexDirection: "column", alignItems: "center", gap: "20px" }}>
         {schedule.map((item, index) => (
-          <div key={index} style={{ display: "flex", alignItems: "center", width: "90%", maxWidth: "400px" }}>
+          <div
+            key={index}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              width: '90%',
+              maxWidth: '400px',
+            }}
+          >
             {/* 左の丸アイコン */}
             <div
               style={{
-                minWidth: "40px",
-                minHeight: "40px",
-                borderRadius: "50%",
-                backgroundColor: "#4F46E5",
-                color: "white",
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                marginRight: "16px",
+                minWidth: '40px',
+                minHeight: '40px',
+                borderRadius: '50%',
+                backgroundColor: '#4F46E5',
+                color: 'white',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                marginRight: '16px',
                 flexShrink: 0,
               }}
             >
               {index + 1}
             </div>
             {/* イベント内容 */}
-            <div style={{ textAlign: "left" }}>
-              <p style={{ margin: 0, fontSize: "14px", color: "#555" }}>{item.time}</p>
-              <p style={{ margin: 0, fontSize: "16px", fontWeight: 500 }}>{item.event}</p>
+            <div style={{ textAlign: 'left' }}>
+              <p style={{ margin: 0, fontSize: '14px', color: '#555' }}>
+                {item.time}
+              </p>
+              <p style={{ margin: 0, fontSize: '16px', fontWeight: 500 }}>
+                {item.event}
+              </p>
             </div>
           </div>
         ))}
