@@ -14,7 +14,7 @@ export default function PhotoUploadPage() {
 
       <div style={{ padding: "20px", textAlign: "center", marginTop: "80px" }}>
         <p style={{ marginBottom: "20px", fontSize: "18px" }}>
-          当日の写真をぜひアップロードお願いいたします 📸
+          当日の写真をぜひアップロード<br/>お願いいたします 📸
         </p>
 
         {/* 新郎側アップロードボタン */}

@@ -96,7 +96,7 @@ const MessagePage: React.FC = () => {
   };
   return (
     <div style={{ paddingBottom: '40px' }}>
-      <Header title="💌 メッセージ・ゲストブック" />
+      <Header title="💌 メッセージ" />
 
       {/* --- フォーム固定 --- */}
       <div

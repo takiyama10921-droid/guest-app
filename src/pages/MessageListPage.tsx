@@ -43,12 +43,11 @@ const MessageListPage: React.FC = () => {
 
   return (
     <div>
-      <Header title="📚 ゲストメッセージ一覧（新郎新婦用）" />
+      <Header title="📚 ゲストメッセージ一覧" />
 
       <div
         style={{
           width: "95%",
-          // maxWidth: "800px",
           margin: "80px auto 0",
           paddingBottom: "60px",
         }}

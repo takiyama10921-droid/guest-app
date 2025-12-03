@@ -45,7 +45,15 @@ export default function GuestApp() {
   // ログイン前
   if (!guest) {
     return (
-      <div style={{ textAlign: "center", marginTop: "60px" }}>
+      <div
+        style={{
+          textAlign: 'center',
+          marginTop: '60px',
+          marginLeft: 'auto', // ★追加：中央へ
+          marginRight: 'auto', // ★追加：中央へ
+          width: 'fit-content', // ★追加：内容分だけの幅にする
+        }}
+      >
         <h1>ようこそ！</h1>
         <p>QRの下にあるコードを入力してください</p>
 
@@ -55,9 +63,9 @@ export default function GuestApp() {
           onChange={(e) => setInputCode(e.target.value)}
           placeholder="例:0926"
           style={{
-            fontSize: "1.2em",
-            padding: "5px 10px",
-            textAlign: "center",
+            fontSize: '1.2em',
+            padding: '5px 10px',
+            textAlign: 'center',
           }}
         />
 
@@ -65,10 +73,10 @@ export default function GuestApp() {
           <button
             onClick={handleLogin}
             style={{
-              marginTop: "10px",
-              padding: "8px 16px",
-              fontSize: "1em",
-              cursor: "pointer",
+              marginTop: '10px',
+              padding: '8px 16px',
+              fontSize: '1em',
+              cursor: 'pointer',
             }}
           >
             決定
@@ -78,8 +86,8 @@ export default function GuestApp() {
         {message && (
           <p
             style={{
-              color: "red",
-              marginTop: "10px",
+              color: 'red',
+              marginTop: '10px',
             }}
           >
             {message}
@@ -111,7 +119,7 @@ export default function GuestApp() {
         <button onClick={handleOpenProfile}>プロフィール</button>
         <button onClick={handleOpenVenueInfo}>ご案内/注意事項</button>
         <button onClick={handleOpenVenueMap}>会場内MAP</button>
-        <button onClick={handleOpenMessage}>メッセージ投稿</button>
+        <button onClick={handleOpenMessage}>メッセージ</button>
         <button>？</button>
       </div>
 

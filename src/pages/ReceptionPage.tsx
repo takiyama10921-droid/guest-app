@@ -101,7 +101,6 @@ export default function ReceptionPage() {
     <div style={{ textAlign: 'center', marginTop: 50 }}>
       <h1>受付画面</h1>
       <p>名前：{guest.name}</p>
-      <p>受付コード：{guest.code}</p>
       <p>ご祝儀：{guest.giftReceivedBefore ? '当日受付': '事前にお預かり済'}</p>
       <p>お車代：{guest.hasTransportationGift ? 'あり': 'なし'}</p>
       <p>受付状態：{guest.checkedin ? '✅ 受付済' : '❌ 未受付'}</p>
@@ -109,7 +108,7 @@ export default function ReceptionPage() {
         <button onClick={handleCheckin} style={{ marginRight: 10 }}>
           受付完了
         </button>
-        <button onClick={handleReset}>リセット</button>
+        <button onClick={handleReset}>未受付にする</button>
         <button onClick={seedGuests}>初期データ投入</button>
       </div>
     </div>
