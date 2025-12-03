@@ -14,7 +14,7 @@ function MenuPage() {
   return (
     <div>
       <Header title="メニュー" />
-      <div style={{ textAlign: 'center', padding: '20px' }}>
+      <div style={{ textAlign: 'center', padding: '20px', marginTop: "100px" }}>
         {/* メニューの図 */}
         <img
           src={menu}

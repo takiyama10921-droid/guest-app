@@ -12,7 +12,7 @@ export default function PhotoUploadPage() {
     <div>
       <Header title="写真アップロード" />
 
-      <div style={{ padding: "20px", textAlign: "center", marginTop: "80px" }}>
+      <div style={{ padding: "20px", textAlign: "center", marginTop: "100px" }}>
         <p style={{ marginBottom: "20px", fontSize: "18px" }}>
           当日の写真をぜひアップロード<br/>お願いいたします 📸
         </p>

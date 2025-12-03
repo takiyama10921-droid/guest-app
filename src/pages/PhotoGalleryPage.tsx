@@ -18,12 +18,15 @@ const PhotoGalleryPage: React.FC = () => {
       <div
         style={{
           display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)', // ★ 3列固定
+          gridTemplateColumns: 'repeat(3, 1fr)',
           gap: '10px',
           width: '100%',
-          maxWidth: '600px', // 必要であれば（横画面でも可）
+          maxWidth: '600px',
           margin: '0 auto',
-          padding: '0 10px',
+          padding: '10px', // ← 余白は内側にして安全に
+          marginTop: '100px',
+          boxSizing: 'border-box', // ★ 横幅オーバー防止
+          overflowX: 'hidden',
         }}
       >
         {photoLinks.map((url, i) => (

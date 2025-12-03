@@ -15,7 +15,7 @@ function SeatingChartPage() {
     <div>
       <Header title="席次表" />
 
-      <div style={{ textAlign: "center", padding: "20px" }}>
+      <div style={{ textAlign: "center", marginTop: "100px" }}>
         <img
           src={seatingChart}
           alt="席次表"

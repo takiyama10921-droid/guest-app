@@ -12,38 +12,40 @@ const Header: React.FC<HeaderProps> = ({ title, bgColor = "#ffffff" }) => {
   return (
     <div
       style={{
-        position: 'fixed',
+        position: "fixed",
         top: 0,
         left: 0,
-        width: '100%',
-        height: '56px',
+        width: "100%",
+        height: "56px",
         background: bgColor,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'flex-start', // ← 左寄せに変更
-        borderBottom: '1px solid #ddd',
+        display: "flex",
+        alignItems: "center",
+        borderBottom: "1px solid #ddd",
         zIndex: 1000,
-        paddingLeft: '100px', // ← 戻るボタンの幅＋余白
+        padding: "0 16px",       // ← 安全な左右余白
+        boxSizing: "border-box", // ← ★ 横スクロール防止の決め手
+        gap: "12px",             // ← ボタンとタイトルの間隔
       }}
     >
       {/* 戻るボタン */}
       <button
         onClick={() => navigate(-1)}
         style={{
-          position: 'absolute',
-          left: '12px', // ← 左固定
-          padding: '6px 12px',
-          borderRadius: '8px',
-          border: '1px solid #ccc',
-          background: '#f7f7f7',
-          cursor: 'pointer',
+          padding: "6px 12px",
+          borderRadius: "8px",
+          border: "1px solid #ccc",
+          background: "#f7f7f7",
+          cursor: "pointer",
+          whiteSpace: "nowrap",
         }}
       >
         ← 戻る
       </button>
 
       {/* タイトル */}
-      <h2 style={{ margin: 0, fontSize: '18px' }}>{title}</h2>
+      <h2 style={{ margin: 0, fontSize: "18px", whiteSpace: "nowrap" }}>
+        {title}
+      </h2>
     </div>
   );
 };

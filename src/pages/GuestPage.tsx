@@ -48,10 +48,8 @@ export default function GuestApp() {
       <div
         style={{
           textAlign: 'center',
-          marginTop: '60px',
-          marginLeft: 'auto', // ★追加：中央へ
-          marginRight: 'auto', // ★追加：中央へ
-          width: 'fit-content', // ★追加：内容分だけの幅にする
+          marginTop: '200px',
+          width: '100%',
         }}
       >
         <h1>ようこそ！</h1>
@@ -99,7 +97,7 @@ export default function GuestApp() {
 
   // ログイン後
   return (
-    <div style={{ textAlign: "center", marginTop: "40px" }}>
+    <div style={{ textAlign: "center", marginTop: "200px" }}>
       <h1>ようこそ<br />{guest.name} 様！</h1>
 
       <div
