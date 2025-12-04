@@ -9,6 +9,7 @@ import {
   query,
   onSnapshot,
   orderBy,
+  limit,
 } from "firebase/firestore";
 import { db } from "../firebase";
 
@@ -32,7 +33,11 @@ const MessagePage: React.FC = () => {
 
   // Firestore 取得
   useEffect(() => {
-    const q = query(collection(db, 'messages'), orderBy('time'));
+    const q = query(
+      collection(db, 'messages'),
+      orderBy('time', 'desc'), // 新しい順で取得
+      limit(20) // ★ 20件に制限
+    );
     const unsubscribe = onSnapshot(q, (snapshot) => {
       setSentList(
         snapshot.docs.map((doc) => {
@@ -96,13 +101,36 @@ const MessagePage: React.FC = () => {
   };
   return (
     <div style={{ paddingBottom: '40px' }}>
-      <Header title="💌 メッセージ" />
+      <Header title=" メッセージ" />
+
+      {/* --- 注意書き（固定） --- */}
+      <div
+        style={{
+          position: 'fixed',
+          top: '60px',
+          left: '50%',
+          transform: 'translateX(-50%)',
+          width: '95%',
+          maxWidth: '420px',
+          background: '#FFF7E6',
+          padding: '10px 14px',
+          borderRadius: '10px',
+          boxShadow: '0 1px 4px rgba(0,0,0,0.15)',
+          zIndex: 25,
+          color: '#8A5B00',
+          fontSize: '14px',
+          textAlign: 'left',
+        }}
+      >
+        新郎新婦に向けて、メッセージをお寄せください！<br />
+        式の感想を <strong>Twitter</strong> 風に投稿していただくのも大歓迎です！
+      </div>
 
       {/* --- フォーム固定 --- */}
       <div
         style={{
           position: 'fixed',
-          top: '60px',
+          top: '150px',
           left: '50%',
           transform: 'translateX(-50%)',
           width: '95%',
@@ -164,7 +192,7 @@ const MessagePage: React.FC = () => {
       <div
         style={{
           position: 'fixed',
-          top: '330px', // ← フォームの下に固定
+          top: '450px', // ← フォームの下に固定
           left: '50%',
           transform: 'translateX(-50%)',
           width: '95%',
@@ -183,7 +211,7 @@ const MessagePage: React.FC = () => {
       <div
         style={{
           position: 'fixed',
-          top: '380px', // ← タイトルの下
+          top: '490px', // ← タイトルの下
           left: '50%',
           transform: 'translateX(-50%)',
           width: '95%',

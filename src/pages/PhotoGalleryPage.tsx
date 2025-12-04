@@ -13,7 +13,7 @@ const PhotoGalleryPage: React.FC = () => {
 
   return (
     <div>
-      <Header title="📸 写真ギャラリー" />
+      <Header title=" 前撮りフォト" />
       {/* ギャラリー */}
       <div
         style={{

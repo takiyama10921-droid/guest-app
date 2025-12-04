@@ -41,6 +41,7 @@ export default function GuestApp() {
   const handleOpenVenueInfo = () => navigate("/venueInfo");
   const handleOpenVenueMap = () => navigate("/venueMap");
   const handleOpenMessage = () => navigate("/message");
+  const handleOpenDrink = () => navigate("/drink");
 
   // ログイン前
   if (!guest) {
@@ -98,7 +99,7 @@ export default function GuestApp() {
   // ログイン後
   return (
     <div style={{ textAlign: "center", marginTop: "200px" }}>
-      <h1>ようこそ<br />{guest.name} 様！</h1>
+      <h1>ようこそ！</h1>
 
       <div
         style={{
@@ -111,14 +112,14 @@ export default function GuestApp() {
         }}
       >
         <button onClick={handleOpenSeating}>席次表</button>
-        <button onClick={handleOpenMenu}>メニュー</button>
-        <button onClick={handleOpenPhotoUpload}>写真アップロード</button>
-        <button onClick={handleOpenPhoto}>フォトギャラリー</button>
-        <button onClick={handleOpenProfile}>プロフィール</button>
-        <button onClick={handleOpenVenueInfo}>ご案内/注意事項</button>
-        <button onClick={handleOpenVenueMap}>会場内MAP</button>
+        <button onClick={handleOpenPhoto}>前撮りフォト</button>
+        <button onClick={handleOpenPhotoUpload}>写真<br/>アップロード</button>
+        <button onClick={handleOpenMenu}>お食事</button>
+        <button onClick={handleOpenDrink}>飲み物</button>
+        <button onClick={handleOpenVenueInfo}>ご案内<br/>注意事項</button>
         <button onClick={handleOpenMessage}>メッセージ</button>
-        <button>？</button>
+        <button onClick={handleOpenProfile}>プロフィール</button>
+        <button onClick={handleOpenVenueMap}>会場内<br/>MAP</button>
       </div>
 
       <div style={{ marginTop: "30px" }}>

@@ -13,6 +13,7 @@ import VenueMapPage from "./pages/VenueMapPage";
 import MessagePage from "./pages/MessagePage";
 import PhotoUploadPage from "./pages/PhotoUploadPage";
 import MessageListPage from "./pages/MessageListPage";
+import DrinkMenuPage from "./pages/DrinkMenuPage";
 
 function App() {
   return (
@@ -32,6 +33,7 @@ function App() {
           <Route path="/message" element={<MessagePage />} />
           <Route path="/photoUpload" element={<PhotoUploadPage />} />
           <Route path="/messageList" element={<MessageListPage />} />
+          <Route path="/drink" element={<DrinkMenuPage />} />
         </Routes>
       </Router>
     </GuestProvider>

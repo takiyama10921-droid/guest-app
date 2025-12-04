@@ -12,17 +12,24 @@ function SeatingChartPage() {
     return null;
   }
   return (
-    <div>
-      <Header title="席次表" />
+    <div
+      style={{
+        height: '100vh',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden', // ページ全体のスクロール禁止
+      }}
+    >
+      <Header title=" 席次表" />
 
-      <div style={{ textAlign: "center", marginTop: "100px" }}>
+      <div style={{ textAlign: 'center', marginTop: '100px' }}>
         <img
           src={seatingChart}
           alt="席次表"
           style={{
-            maxWidth: "90%",
-            borderRadius: "12px",
-            border: "2px solid #eee",
+            maxWidth: '90%',
+            borderRadius: '12px',
+            border: '2px solid #eee',
           }}
         />
       </div>
