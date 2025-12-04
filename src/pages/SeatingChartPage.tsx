@@ -30,6 +30,7 @@ function SeatingChartPage() {
             maxWidth: '90%',
             borderRadius: '12px',
             border: '2px solid #eee',
+            marginTop: '100px'
           }}
         />
       </div>

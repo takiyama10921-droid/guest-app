@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 
 const DrinkMenuPage: React.FC = () => {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <div style={{ height: '100vh', overflow: 'hidden' }}>
       {/* 固定ヘッダー */}

@@ -48,9 +48,15 @@ export default function GuestApp() {
     return (
       <div
         style={{
+          height: '100vh',
+          overflow: 'hidden', // ← スクロール禁止
+          display: 'flex',
+          flexDirection: 'column',
+          justifyContent: 'center', // ← 完全中央寄せ
+          alignItems: 'center',
           textAlign: 'center',
-          marginTop: '200px',
-          width: '100%',
+          padding: '0 20px',
+          boxSizing: 'border-box',
         }}
       >
         <h1>ようこそ！</h1>

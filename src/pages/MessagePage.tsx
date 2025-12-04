@@ -123,7 +123,7 @@ const MessagePage: React.FC = () => {
         }}
       >
         新郎新婦に向けて、メッセージをお寄せください！<br />
-        式の感想を <strong>Twitter</strong> 風に投稿していただくのも大歓迎です！
+        <strong>Twitter</strong> 風に投稿していただくのも大歓迎です！
       </div>
 
       {/* --- フォーム固定 --- */}

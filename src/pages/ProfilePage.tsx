@@ -1,9 +1,12 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import groomImg from "../assets/IMG_6736.png";  // 新郎写真
 import brideImg from "../assets/IMG_6711.png";  // 新婦写真
 
 const ProfilePage: React.FC = () => {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div
       style={{

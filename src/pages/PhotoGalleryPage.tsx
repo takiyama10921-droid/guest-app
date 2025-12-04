@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 
 // ローカル写真フォルダの画像
@@ -10,9 +10,16 @@ const photoLinks = [
 
 const PhotoGalleryPage: React.FC = () => {
   const [modalUrl, setModalUrl] = useState<string | null>(null);
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
-    <div>
+    <div
+      style={{
+        height: '100vh',
+        overflow: 'hidden',
+      }}
+    >
       <Header title=" 前撮りフォト" />
       {/* ギャラリー */}
       <div
@@ -27,6 +34,8 @@ const PhotoGalleryPage: React.FC = () => {
           marginTop: '56px',
           boxSizing: 'border-box', // ★ 横幅オーバー防止
           overflowX: 'hidden',
+          overflowY: "auto", 
+          height: "calc(100vh - 56px)"
         }}
       >
         {photoLinks.map((url, i) => (

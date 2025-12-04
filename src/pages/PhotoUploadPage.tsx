@@ -9,10 +9,15 @@ export default function PhotoUploadPage() {
     "https://drive.google.com/drive/folders/1Yxvbar_SBDQkYvM5n0eJzdOI0QIvg2H0?usp=drive_link";
 
   return (
-    <div>
+    <div
+      style={{
+        height: "100vh",
+        overflow: "hidden", // ← ページ全体スクロール禁止
+      }}
+    >
       <Header title=" 写真アップロード" />
 
-      <div style={{ padding: "20px", textAlign: "center", marginTop: "56px" }}>
+      <div style={{ padding: "20px", textAlign: "center", marginTop: "56px"}}>
         <p style={{ marginBottom: "20px", fontSize: "18px" }}>
           当日の写真をぜひアップロード<br/>お願いいたします 📸
         </p>
