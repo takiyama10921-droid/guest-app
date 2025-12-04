@@ -21,7 +21,7 @@ const ProfilePage: React.FC = () => {
         style={{
           flex: 1,
           overflowY: 'auto',
-          paddingTop: '100px',
+          paddingTop: '56px',
           paddingBottom: '24px',
         }}
       >

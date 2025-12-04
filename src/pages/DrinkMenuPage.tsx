@@ -14,7 +14,7 @@ const DrinkMenuPage: React.FC = () => {
           overflowY: 'auto',
           padding: '20px',
           maxWidth: '420px',
-          margin: '70px auto 0', // ← これだけ残す
+          margin: '56px auto 0', // ← これだけ残す
         }}
       >
         {/* 🍸 おすすめドリンク */}

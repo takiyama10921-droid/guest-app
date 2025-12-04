@@ -24,7 +24,7 @@ const PhotoGalleryPage: React.FC = () => {
           maxWidth: '600px',
           margin: '0 auto',
           padding: '10px', // ← 余白は内側にして安全に
-          marginTop: '100px',
+          marginTop: '56px',
           boxSizing: 'border-box', // ★ 横幅オーバー防止
           overflowX: 'hidden',
         }}

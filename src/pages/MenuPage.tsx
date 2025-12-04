@@ -18,7 +18,7 @@ function MenuPage() {
         height: "100vh",
         display: "flex",
         flexDirection: "column",
-        marginTop: "60px"
+        marginTop: "56px"
       }}
     >
       <Header title=" お食事" />

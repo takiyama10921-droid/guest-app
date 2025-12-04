@@ -22,7 +22,7 @@ function SeatingChartPage() {
     >
       <Header title=" 席次表" />
 
-      <div style={{ textAlign: 'center', marginTop: '100px' }}>
+      <div style={{ textAlign: 'center', marginTop: '56px' }}>
         <img
           src={seatingChart}
           alt="席次表"
