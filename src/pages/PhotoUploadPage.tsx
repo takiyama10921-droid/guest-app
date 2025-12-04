@@ -2,7 +2,6 @@
 import Header from "../components/Header";
 
 export default function PhotoUploadPage() {
-  // Google Drive アップロードリンク（実際のリンクに差し替え）
   const groomDriveUrl =
     "https://drive.google.com/drive/folders/1OEQabaYkAGEtJCg39xP7zHJZwqUmPAoY?usp=drive_link";
   const brideDriveUrl =
@@ -12,17 +11,27 @@ export default function PhotoUploadPage() {
     <div
       style={{
         height: "100vh",
-        overflow: "hidden", // ← ページ全体スクロール禁止
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden",  // ← 全体のスクロールは禁止
       }}
     >
       <Header title=" 写真アップロード" />
 
-      <div style={{ padding: "20px", textAlign: "center", marginTop: "56px"}}>
+      {/* ここだけスクロール許可 */}
+      <div
+        style={{
+          flex: 1,
+          overflowY: "auto",
+          padding: "20px",
+          paddingTop: "56px", // ← Headerの高さ分だけ開ける
+          textAlign: "center",
+        }}
+      >
         <p style={{ marginBottom: "20px", fontSize: "18px" }}>
-          当日の写真をぜひアップロード<br/>お願いいたします 📸
+          当日の写真をぜひアップロード<br />お願いいたします 📸
         </p>
 
-        {/* 新郎側アップロードボタン */}
         <a
           href={groomDriveUrl}
           target="_blank"
@@ -32,7 +41,6 @@ export default function PhotoUploadPage() {
           👦 新郎側ゲストはこちら
         </a>
 
-        {/* 新婦側アップロードボタン */}
         <a
           href={brideDriveUrl}
           target="_blank"
@@ -50,6 +58,7 @@ export default function PhotoUploadPage() {
     </div>
   );
 }
+
 
 // ボタン共通スタイル
 const buttonStyle: React.CSSProperties = {

@@ -22,7 +22,16 @@ function SeatingChartPage() {
     >
       <Header title=" 席次表" />
 
-      <div style={{ textAlign: 'center', marginTop: '56px' }}>
+      <div
+        style={{
+          flex: 1,
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingTop: '56px', // ヘッダー分
+          boxSizing: 'border-box',
+        }}
+      >
         <img
           src={seatingChart}
           alt="席次表"
@@ -30,7 +39,6 @@ function SeatingChartPage() {
             maxWidth: '90%',
             borderRadius: '12px',
             border: '2px solid #eee',
-            marginTop: '100px'
           }}
         />
       </div>

@@ -18,29 +18,31 @@ function MenuPage() {
         height: "100vh",
         display: "flex",
         flexDirection: "column",
-        marginTop: "56px",
-        overflow: "hidden",
+        overflow: "hidden",  // ← 全体のスクロール禁止
       }}
     >
       <Header title=" お食事" />
 
+      {/* メインエリアだけスクロール許可 */}
       <div
         style={{
           flex: 1,
           overflowY: "auto",
           padding: "20px",
-          textAlign: "center"
+          paddingTop: "56px", // ← ヘッダー分のスペース
+          textAlign: "center",
+          boxSizing: "border-box",
         }}
       >
         <img
           src={menu}
           alt="メニュー"
           style={{
-            marginTop: '20px',
-            maxWidth: '90%',
-            height: 'auto',
-            border: '2px solid #eee',
-            borderRadius: '12px',
+            marginTop: "20px",
+            maxWidth: "90%",
+            height: "auto",
+            border: "2px solid #eee",
+            borderRadius: "12px",
           }}
         />
       </div>
