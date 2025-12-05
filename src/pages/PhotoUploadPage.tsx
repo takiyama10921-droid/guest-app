@@ -27,7 +27,7 @@ export default function PhotoUploadPage() {
       <div
         style={{
           flex: 1,
-          overflowY: "auto",
+          overflow: "hidden",
           padding: "20px",
           marginTop: "56px", // ← Headerの高さ分だけ下げる（iPhoneでズレない正しいやり方）
           textAlign: "center",

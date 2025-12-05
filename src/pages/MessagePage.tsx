@@ -189,7 +189,7 @@ const MessagePage: React.FC = () => {
       </div>
 
       {/* --- タイトル固定 --- */}
-      <div
+      {/* <div
         style={{
           position: 'fixed',
           top: '450px', // ← フォームの下に固定
@@ -205,10 +205,10 @@ const MessagePage: React.FC = () => {
         }}
       >
         <h3 style={{ margin: 0 }}>📝 送信したメッセージ</h3>
-      </div>
+      </div> */}
 
       {/* --- メッセージ一覧（スクロール） --- */}
-      <div
+      {/* <div
         style={{
           position: 'fixed',
           top: '490px', // ← タイトルの下
@@ -263,7 +263,7 @@ const MessagePage: React.FC = () => {
               </button>
             </div>
           ))}
-      </div>
+      </div> */}
     </div>
   );
 };

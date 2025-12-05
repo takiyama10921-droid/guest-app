@@ -30,7 +30,7 @@ function MenuPage() {
       <div
         style={{
           flex: 1,
-          overflowY: "auto",
+          overflow: "hidden",
           padding: "20px",
           paddingTop: "56px", // ← ヘッダー分のスペース
           textAlign: "center",

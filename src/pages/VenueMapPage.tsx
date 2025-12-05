@@ -37,6 +37,7 @@ const VenueMapPage: React.FC = () => {
             borderRadius: "12px",
             boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
             textAlign: "left",
+            boxSizing: "border-box",
           }}
         >
           <h3 style={{ marginTop: 0 }}>🔍 会場配置図</h3>
