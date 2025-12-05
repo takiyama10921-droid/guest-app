@@ -9,10 +9,10 @@ export default function PhotoUploadPage() {
     "https://drive.google.com/drive/folders/1Yxvbar_SBDQkYvM5n0eJzdOI0QIvg2H0?usp=drive_link";
 
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
+    document.body.style.overflow = "hidden";
     window.scrollTo(0, 0);
     return () => {
-      document.body.style.overflow = 'auto'; // ページ離脱で戻す
+      document.body.style.overflow = "auto";
     };
   }, []);
 
@@ -22,19 +22,19 @@ export default function PhotoUploadPage() {
         height: "100dvh",
         display: "flex",
         flexDirection: "column",
-        overflow: "hidden", // ← 全体スクロール禁止
+        overflow: "hidden",
       }}
     >
       <Header title=" 写真アップロード" />
 
-      {/* ここだけスクロール許可 */}
+      {/* ←ここを calc に変える */}
       <div
         style={{
-          flex: 1,
-          overflow: "hidden",
+          height: "calc(100dvh - 56px)", // ★絶対に必要
+          overflow: "auto",               // ←スクロール許可（長くなる可能性がある）
           padding: "20px",
-          marginTop: "56px", // ← Headerの高さ分だけ下げる（iPhoneでズレない正しいやり方）
           textAlign: "center",
+          boxSizing: "border-box",
           WebkitOverflowScrolling: "touch",
         }}
       >
@@ -69,8 +69,6 @@ export default function PhotoUploadPage() {
   );
 }
 
-
-// ボタン共通スタイル
 const buttonStyle: React.CSSProperties = {
   display: "block",
   padding: "12px 20px",

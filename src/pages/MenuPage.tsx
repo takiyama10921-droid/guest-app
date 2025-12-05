@@ -3,10 +3,12 @@ import menu from "../assets/menu.png";
 import { useGuest } from "../context/GuestContext";
 import Header from "../components/Header";
 import { useEffect } from "react";
+import usePageScrollLock from "../hooks/usePageScrollLock";
 
 function MenuPage() {
   const { guest } = useGuest();
   const navigate = useNavigate();
+  usePageScrollLock(true);
 
   if (!guest) {
     navigate("/guest/login");
