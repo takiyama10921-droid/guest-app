@@ -1,3 +1,5 @@
+// src/pages/PhotoUploadPage.tsx
+import { useEffect } from "react";
 import Header from "../components/Header";
 import usePageScrollLock from "../hooks/usePageScrollLock";
 
@@ -7,26 +9,27 @@ export default function PhotoUploadPage() {
   const brideDriveUrl =
     "https://drive.google.com/drive/folders/1Yxvbar_SBDQkYvM5n0eJzdOI0QIvg2H0?usp=drive_link";
 
-  // ★ページ全体のスクロールを止める
   usePageScrollLock(true);
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div
       style={{
-        position: "fixed",  // ←画面を完全に固定
-        inset: 0,           // ←上下左右 0
-        overflow: "hidden",
+        height: "100dvh",
         display: "flex",
         flexDirection: "column",
-        background: "#fff",
+        overflow: "hidden",
       }}
     >
       <Header title=" 写真アップロード" />
 
+      {/* ←ここを calc に変える */}
       <div
         style={{
-          height: "calc(100dvh - 56px)", // ←iPhone高さ問題を確実に回避
-          overflow: "auto",              // ←必要なスクロールだけ許可
+          height: "calc(100dvh - 56px)", // ★絶対に必要
+          overflow: "auto",               // ←スクロール許可（長くなる可能性がある）
           padding: "20px",
           textAlign: "center",
           boxSizing: "border-box",
