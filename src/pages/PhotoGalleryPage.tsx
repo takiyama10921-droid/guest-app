@@ -18,7 +18,7 @@ const PhotoGalleryPage: React.FC = () => {
   return (
     <div
       style={{
-        height: '100vh',
+        height: '100dvh',
         overflow: 'hidden',
       }}
     >
@@ -66,7 +66,7 @@ const PhotoGalleryPage: React.FC = () => {
             top: 0,
             left: 0,
             width: '100vw',
-            height: '100vh',
+            height: '100dvh',
             background: 'rgba(0,0,0,0.8)',
             display: 'flex',
             alignItems: 'center',

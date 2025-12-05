@@ -6,14 +6,14 @@ const DrinkMenuPage: React.FC = () => {
       window.scrollTo(0, 0);
     }, []);
   return (
-    <div style={{ height: '100vh', overflow: 'hidden' }}>
+    <div style={{ height: '100dvh', overflow: 'hidden' }}>
       {/* 固定ヘッダー */}
       <Header title="飲み物" />
 
       {/* スクロール区域 */}
       <div
         style={{
-          height: 'calc(100vh - 130px)',
+          height: 'calc(100dvh - 130px)',
           overflowY: 'auto',
           padding: '20px',
           maxWidth: '420px',

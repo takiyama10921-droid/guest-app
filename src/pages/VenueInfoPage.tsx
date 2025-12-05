@@ -8,7 +8,7 @@ const VenueInfoPage: React.FC = () => {
   return (
     <div
       style={{
-        height: "100vh",
+        height: "100dvh",
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",   // ページ全体のスクロール禁止

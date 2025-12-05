@@ -9,7 +9,7 @@ const VenueMapPage: React.FC = () => {
   return (
     <div
       style={{
-        height: "100vh",                    // 画面全体
+        height: "100dvh",                    // 画面全体
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",                 // ページ全体のスクロール禁止

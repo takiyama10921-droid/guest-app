@@ -22,7 +22,7 @@ function SeatingChartPage() {
   return (
     <div
       style={{
-        height: '100vh',
+        height: '100dvh',
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
