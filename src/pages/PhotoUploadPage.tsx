@@ -7,16 +7,18 @@ export default function PhotoUploadPage() {
     "https://drive.google.com/drive/folders/1OEQabaYkAGEtJCg39xP7zHJZwqUmPAoY?usp=drive_link";
   const brideDriveUrl =
     "https://drive.google.com/drive/folders/1Yxvbar_SBDQkYvM5n0eJzdOI0QIvg2H0?usp=drive_link";
+
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
   return (
     <div
       style={{
         height: "100vh",
         display: "flex",
         flexDirection: "column",
-        overflow: "hidden",  // ← 全体のスクロールは禁止
+        overflow: "hidden", // ← 全体スクロール禁止
       }}
     >
       <Header title=" 写真アップロード" />
@@ -27,8 +29,9 @@ export default function PhotoUploadPage() {
           flex: 1,
           overflowY: "auto",
           padding: "20px",
-          paddingTop: "56px", // ← Headerの高さ分だけ開ける
+          marginTop: "56px", // ← Headerの高さ分だけ下げる（iPhoneでズレない正しいやり方）
           textAlign: "center",
+          WebkitOverflowScrolling: "touch",
         }}
       >
         <p style={{ marginBottom: "20px", fontSize: "18px" }}>

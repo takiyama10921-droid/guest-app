@@ -1,11 +1,19 @@
+import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
-import seatingChart from "../assets/seating_chart.png"; // 席次表画像を用意
+import seatingChart from "../assets/seating_chart.png";
 import { useGuest } from "../context/GuestContext";
 import Header from "../components/Header";
 
 function SeatingChartPage() {
   const { guest } = useGuest();
   const navigate = useNavigate();
+
+  useEffect(() => {
+    document.body.style.overflow = "hidden"; // ← scroll完全禁止
+    return () => {
+      document.body.style.overflow = "auto"; // ← ページ離脱時に戻す
+    };
+  }, []);
 
   if (!guest) {
     navigate("/guest/login");
@@ -17,7 +25,7 @@ function SeatingChartPage() {
         height: '100vh',
         display: 'flex',
         flexDirection: 'column',
-        overflow: 'hidden', // ページ全体のスクロール禁止
+        overflow: 'hidden',
       }}
     >
       <Header title=" 席次表" />
@@ -28,7 +36,7 @@ function SeatingChartPage() {
           display: 'flex',
           justifyContent: 'center',
           alignItems: 'center',
-          paddingTop: '56px', // ヘッダー分
+          paddingTop: '56px',
           boxSizing: 'border-box',
         }}
       >
@@ -37,6 +45,7 @@ function SeatingChartPage() {
           alt="席次表"
           style={{
             maxWidth: '90%',
+            height: 'auto',
             borderRadius: '12px',
             border: '2px solid #eee',
           }}
