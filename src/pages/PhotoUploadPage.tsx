@@ -30,8 +30,7 @@ export default function PhotoUploadPage() {
         style={{
           height: "calc(100dvh - 56px)", // ★絶対に必要
           overflow: "auto",               // ←スクロール許可（長くなる可能性がある）
-          paddingTop: "56px", 
-          padding: "20px",
+          padding: "56px 20px 20px",
           textAlign: "center",
           boxSizing: "border-box",
           WebkitOverflowScrolling: "touch",
