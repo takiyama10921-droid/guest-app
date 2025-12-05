@@ -8,39 +8,40 @@ import usePageScrollLock from "../hooks/usePageScrollLock";
 function MenuPage() {
   const { guest } = useGuest();
   const navigate = useNavigate();
+
+  // ★これだけで十分。body の overflow 制御は絶対に二重で書かない
   usePageScrollLock(true);
 
   if (!guest) {
     navigate("/guest/login");
     return null;
   }
+
   useEffect(() => {
-    document.body.style.overflow = 'hidden';
     window.scrollTo(0, 0);
-    return () => {
-      document.body.style.overflow = 'auto'; // ページ離脱で戻す
-    };
   }, []);
+
   return (
     <div
       style={{
-        height: "100dvh",
+        position: "fixed",     // ★画面を固定
+        inset: 0,              // ★上下左右すべて 0
+        overflow: "hidden",
         display: "flex",
         flexDirection: "column",
-        overflow: "hidden",  // ← 全体のスクロール禁止
+        background: "#fff",
       }}
     >
       <Header title=" お食事" />
 
-      {/* メインエリアだけスクロール許可 */}
       <div
         style={{
           flex: 1,
-          overflow: "hidden",
           padding: "20px",
-          paddingTop: "56px", // ← ヘッダー分のスペース
+          paddingTop: "56px",
           textAlign: "center",
           boxSizing: "border-box",
+          overflow: "hidden",
         }}
       >
         <img
