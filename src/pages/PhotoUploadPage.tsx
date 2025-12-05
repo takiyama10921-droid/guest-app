@@ -9,7 +9,11 @@ export default function PhotoUploadPage() {
     "https://drive.google.com/drive/folders/1Yxvbar_SBDQkYvM5n0eJzdOI0QIvg2H0?usp=drive_link";
 
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     window.scrollTo(0, 0);
+    return () => {
+      document.body.style.overflow = 'auto'; // ページ離脱で戻す
+    };
   }, []);
 
   return (

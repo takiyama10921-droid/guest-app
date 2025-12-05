@@ -13,7 +13,11 @@ function MenuPage() {
     return null;
   }
   useEffect(() => {
+    document.body.style.overflow = 'hidden';
     window.scrollTo(0, 0);
+    return () => {
+      document.body.style.overflow = 'auto'; // ページ離脱で戻す
+    };
   }, []);
   return (
     <div
