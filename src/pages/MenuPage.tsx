@@ -24,12 +24,10 @@ function MenuPage() {
   return (
     <div
       style={{
-        position: "fixed",     // ★画面を固定
-        inset: 0,              // ★上下左右すべて 0
-        overflow: "hidden",
-        display: "flex",
-        flexDirection: "column",
-        background: "#fff",
+        height: '100dvh',
+        display: 'flex',
+        flexDirection: 'column',
+        overflow: 'hidden',
       }}
     >
       <Header title=" お食事" />
@@ -37,18 +35,17 @@ function MenuPage() {
       <div
         style={{
           flex: 1,
-          padding: "20px",
-          paddingTop: "56px",
-          textAlign: "center",
-          boxSizing: "border-box",
-          overflow: "hidden",
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems: 'center',
+          paddingTop: '56px',
+          boxSizing: 'border-box',
         }}
       >
         <img
           src={menu}
           alt="メニュー"
           style={{
-            marginTop: "20px",
             maxWidth: "90%",
             height: "auto",
             border: "2px solid #eee",
