@@ -4,8 +4,8 @@ import {
   addDoc,
   collection,
   Timestamp,
-  doc,
-  deleteDoc,
+  // doc,
+  // deleteDoc,
   query,
   onSnapshot,
   orderBy,
@@ -79,26 +79,26 @@ const MessagePage: React.FC = () => {
   };
 
   // 削除
-  const handleDelete = async (id: string) => {
-    const ok = window.confirm('本当に削除しますか？');
-    if (!ok) return;
+  // const handleDelete = async (id: string) => {
+  //   const ok = window.confirm('本当に削除しますか？');
+  //   if (!ok) return;
 
-    try {
-      await deleteDoc(doc(db, 'messages', id));
-      setSentList(sentList.filter((msg) => msg.id !== id));
-    } catch (err) {
-      console.error('削除失敗', err);
-    }
-  };
+  //   try {
+  //     await deleteDoc(doc(db, 'messages', id));
+  //     setSentList(sentList.filter((msg) => msg.id !== id));
+  //   } catch (err) {
+  //     console.error('削除失敗', err);
+  //   }
+  // };
 
-  const toMillis = (t: Timestamp | Date) => {
-    if (t instanceof Date) return t.getTime();
-    if (t && typeof (t as any).toMillis === 'function')
-      return (t as any).toMillis();
-    if (t && typeof (t as any).toDate === 'function')
-      return (t as any).toDate().getTime();
-    return 0; // fallback（絶対に number を返す）
-  };
+  // const toMillis = (t: Timestamp | Date) => {
+  //   if (t instanceof Date) return t.getTime();
+  //   if (t && typeof (t as any).toMillis === 'function')
+  //     return (t as any).toMillis();
+  //   if (t && typeof (t as any).toDate === 'function')
+  //     return (t as any).toDate().getTime();
+  //   return 0; // fallback（絶対に number を返す）
+  // };
   return (
     <div style={{ paddingBottom: '40px' }}>
       <Header title=" メッセージ" />
