@@ -1,8 +1,11 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Header from "../components/Header";
 import mapImage from "../assets/img_access01.jpg";
 
 const VenueMapPage: React.FC = () => {
+  useEffect(() => {
+      window.scrollTo(0, 0);
+    }, []);
   return (
     <div
       style={{

@@ -152,7 +152,7 @@ const ProfilePage: React.FC = () => {
             boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
           }}
         >
-          <h3 style={{ marginTop: 0 }}>❓ Q&A</h3>
+          <h3 style={{ marginTop: 0 }}>❓ Q&A（仮）</h3>
 
           <div style={{ marginBottom: '16px' }}>
             <p style={{ fontWeight: 'bold', marginBottom: '4px' }}>

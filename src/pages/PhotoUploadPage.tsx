@@ -1,4 +1,5 @@
 // src/pages/PhotoUploadPage.tsx
+import { useEffect } from "react";
 import Header from "../components/Header";
 
 export default function PhotoUploadPage() {
@@ -6,7 +7,9 @@ export default function PhotoUploadPage() {
     "https://drive.google.com/drive/folders/1OEQabaYkAGEtJCg39xP7zHJZwqUmPAoY?usp=drive_link";
   const brideDriveUrl =
     "https://drive.google.com/drive/folders/1Yxvbar_SBDQkYvM5n0eJzdOI0QIvg2H0?usp=drive_link";
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div
       style={{

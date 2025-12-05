@@ -6,6 +6,8 @@ const photoLinks = [
   "/photos/IMG_6482.jpg",
   "/photos/m4BOCvyqQ5apQPqzuOq09Q.jpg",
   "/photos/IMG_6331.jpg",
+  "/photos/IMG_6736.png",
+  "/photos/IMG_6711.png",
 ];
 
 const PhotoGalleryPage: React.FC = () => {
@@ -35,7 +37,6 @@ const PhotoGalleryPage: React.FC = () => {
           boxSizing: 'border-box', // ★ 横幅オーバー防止
           overflowX: 'hidden',
           overflowY: "auto", 
-          height: "calc(100vh - 56px)"
         }}
       >
         {photoLinks.map((url, i) => (

@@ -2,6 +2,7 @@ import { useNavigate } from "react-router-dom";
 import menu from "../assets/menu.png";
 import { useGuest } from "../context/GuestContext";
 import Header from "../components/Header";
+import { useEffect } from "react";
 
 function MenuPage() {
   const { guest } = useGuest();
@@ -11,7 +12,9 @@ function MenuPage() {
     navigate("/guest/login");
     return null;
   }
-
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
   return (
     <div
       style={{
