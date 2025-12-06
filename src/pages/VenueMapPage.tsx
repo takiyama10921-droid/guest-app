@@ -9,7 +9,7 @@ const VenueMapPage: React.FC = () => {
   return (
     <div
       style={{
-        height: '100dvh', // 画面全体
+        height: 'auto', // 画面全体
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden', // ページ全体のスクロール禁止
@@ -38,6 +38,10 @@ const VenueMapPage: React.FC = () => {
             boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
             textAlign: 'left',
             boxSizing: 'border-box',
+
+            // ★ 追加：カード自体の高さを画面に収める
+            maxHeight: 'calc(100dvh - 100px)',
+            overflowY: 'auto',
           }}
         >
           <h3 style={{ marginTop: 0 }}>🔍 会場配置図</h3>
