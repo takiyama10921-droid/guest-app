@@ -6,7 +6,7 @@ const DrinkMenuPage: React.FC = () => {
       window.scrollTo(0, 0);
     }, []);
   return (
-    <div style={{ height: '100dvh', overflow: 'hidden' }}>
+    <div style={{ height: '100dvh', overflow: 'hidden', backgroundColor: '#ffffff' }}>
       {/* 固定ヘッダー */}
       <Header title="飲み物" />
 

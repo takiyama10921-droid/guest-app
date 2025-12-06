@@ -26,6 +26,7 @@ function SeatingChartPage() {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
+        backgroundColor: '#fff9cc'
       }}
     >
       <Header title=" 席次表" />

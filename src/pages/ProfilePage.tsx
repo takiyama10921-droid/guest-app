@@ -14,6 +14,7 @@ const ProfilePage: React.FC = () => {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
+        backgroundColor: '#f0f0f0'
       }}
     >
       {/* 固定ヘッダー */}

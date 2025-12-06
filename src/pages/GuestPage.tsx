@@ -16,7 +16,6 @@ export default function GuestApp() {
       return;
     }
 
-    // ▼ 修正：ダミー共通ゲストをセット
     setGuest({
       id: 'common',
       name: 'ゲスト',
@@ -32,7 +31,6 @@ export default function GuestApp() {
     setMessage('');
   };
 
-  // ページ遷移
   const handleOpenSeating = () => navigate('/seating');
   const handleOpenMenu = () => navigate('/menu');
   const handleOpenPhoto = () => navigate('/photo');
@@ -43,14 +41,25 @@ export default function GuestApp() {
   const handleOpenMessage = () => navigate('/message');
   const handleOpenDrink = () => navigate('/drink');
 
+  const memberColors = [
+    '#fff9cc', // 岩本：黄色・薄い
+    '#f4e8ff', // 深澤：紫・薄い
+    '#ffffff', // ラウール：白
+    '#e3f0ff', // 渡辺：青・薄い
+    '#ffe8cc', // 向井：オレンジ・薄い
+    '#e6ffe6', // 阿部：緑・薄い
+    '#f0f0f0', // 目黒：黒（薄いグレー）
+    '#ffdddd', // 宮舘：赤・薄い
+    '#ffe6f5', // 佐久間：ピンク・薄い
+  ];
   // ログイン前
   if (!guest) {
     return (
       <div
         style={{
-          position: 'fixed', // ← これで絶対に画面固定
-          inset: 0, // ← top:0, right:0, bottom:0, left:0
-          overflow: 'hidden', // ← スクロール禁止
+          position: 'fixed',
+          inset: 0,
+          overflow: 'hidden',
           display: 'flex',
           flexDirection: 'column',
           justifyContent: 'center',
@@ -58,6 +67,7 @@ export default function GuestApp() {
           textAlign: 'center',
           padding: '0 20px',
           boxSizing: 'border-box',
+          backgroundColor: '#f7f3ff', // ← ★ 追加
         }}
       >
         <h1>ようこそ！</h1>
@@ -97,8 +107,17 @@ export default function GuestApp() {
 
   // ログイン後
   return (
-    <div style={{ textAlign: 'center', marginTop: '200px' }}>
+    <div
+      style={{
+        textAlign: 'center',
+        // marginTop: '200px',
+        minHeight: '100dvh',
+        backgroundColor: '#f7f3ff', // ← ★ 追加
+        padding: '20px 0',
+      }}
+    >
       <h1>ようこそ！</h1>
+      <h2>2026.9.26</h2>
 
       <div
         style={{
@@ -110,23 +129,23 @@ export default function GuestApp() {
           margin: '0 auto',
         }}
       >
-        <button onClick={handleOpenSeating}>席次表</button>
-        <button onClick={handleOpenPhoto}>前撮りフォト</button>
-        <button onClick={handleOpenPhotoUpload}>
+        <button onClick={handleOpenSeating} style={{ backgroundColor: memberColors[0] }}>席次表</button>
+        <button onClick={handleOpenPhoto} style={{ backgroundColor: memberColors[1] }}>前撮りフォト</button>
+        <button onClick={handleOpenPhotoUpload} style={{ backgroundColor: memberColors[4] }}>
           写真
           <br />
           アップロード
         </button>
-        <button onClick={handleOpenMenu}>お食事</button>
-        <button onClick={handleOpenDrink}>飲み物</button>
-        <button onClick={handleOpenVenueInfo}>
+        <button onClick={handleOpenMenu} style={{ backgroundColor: memberColors[7] }}>お食事</button>
+        <button onClick={handleOpenDrink} style={{ backgroundColor: memberColors[2] }}>飲み物</button>
+        <button onClick={handleOpenVenueInfo} style={{ backgroundColor: memberColors[5] }}>
           ご案内
           <br />
           注意事項
         </button>
-        <button onClick={handleOpenMessage}>メッセージ</button>
-        <button onClick={handleOpenProfile}>プロフィール</button>
-        <button onClick={handleOpenVenueMap}>
+        <button onClick={handleOpenMessage} style={{ backgroundColor: memberColors[8] }}>メッセージ</button>
+        <button onClick={handleOpenProfile} style={{ backgroundColor: memberColors[6] }}>プロフィール</button>
+        <button onClick={handleOpenVenueMap} style={{ backgroundColor: memberColors[3] }}>
           会場内
           <br />
           MAP

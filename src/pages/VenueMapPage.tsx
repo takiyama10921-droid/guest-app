@@ -38,7 +38,7 @@ const VenueMapPage: React.FC = () => {
             boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
             textAlign: 'left',
             boxSizing: 'border-box',
-
+            backgroundColor: '#e3f0ff',
             // ★ 追加：カード自体の高さを画面に収める
             maxHeight: 'calc(100dvh - 100px)',
             overflowY: 'auto',

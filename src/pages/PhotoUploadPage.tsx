@@ -21,6 +21,7 @@ export default function PhotoUploadPage() {
         display: "flex",
         flexDirection: "column",
         overflow: "hidden",
+        backgroundColor: '#ffe8cc'
       }}
     >
       <Header title=" 写真アップロード" />

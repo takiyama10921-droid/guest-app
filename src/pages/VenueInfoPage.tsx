@@ -35,6 +35,7 @@ const VenueInfoPage: React.FC = () => {
             padding: '16px',
             borderRadius: '12px',
             boxShadow: '0 2px 8px rgba(0,0,0,0.08)',
+            backgroundColor: '#e6ffe6'
           }}
         >
           <h3 style={{ margin: '0 0 8px 0' }}>🎉 披露宴会場</h3>
@@ -55,6 +56,7 @@ const VenueInfoPage: React.FC = () => {
             padding: '16px',
             borderRadius: '12px',
             boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+            backgroundColor: '#e6ffe6'
           }}
         >
           <h3 style={{ marginTop: 0 }}>📌 会場内のご案内</h3>
@@ -83,6 +85,7 @@ const VenueInfoPage: React.FC = () => {
             padding: '16px',
             borderRadius: '12px',
             boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+            backgroundColor: '#e6ffe6'
           }}
         >
           <h3 style={{ marginTop: 0 }}>📱 当日のお願い</h3>
@@ -128,6 +131,7 @@ const VenueInfoPage: React.FC = () => {
             padding: '16px',
             borderRadius: '12px',
             boxShadow: '0 2px 8px rgba(0,0,0,0.06)',
+            backgroundColor: '#e6ffe6'
           }}
         >
           <h3 style={{ marginTop: 0 }}>👶 その他のご案内</h3>

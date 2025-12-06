@@ -100,7 +100,7 @@ const MessagePage: React.FC = () => {
   //   return 0; // fallback（絶対に number を返す）
   // };
   return (
-    <div style={{ paddingBottom: '40px' }}>
+    <div style={{ paddingBottom: '40px', backgroundColor: '#ffe6f5' }}>
       <Header title=" メッセージ" />
 
       {/* --- 注意書き（固定） --- */}
@@ -120,6 +120,7 @@ const MessagePage: React.FC = () => {
           color: '#8A5B00',
           fontSize: '14px',
           textAlign: 'left',
+          backgroundColor: '#ffe6f5'
         }}
       >
         新郎新婦に向けて、メッセージをお寄せください！<br />
@@ -140,6 +141,7 @@ const MessagePage: React.FC = () => {
           borderRadius: '12px',
           boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
           zIndex: 20,
+          backgroundColor: '#ffe6f5'
         }}
       >
         <h3 style={{ marginTop: 0 }}>✏️ メッセージを書く</h3>

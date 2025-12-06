@@ -20,6 +20,7 @@ const PhotoGalleryPage: React.FC = () => {
       style={{
         height: '100dvh',
         overflow: 'hidden',
+        backgroundColor: '#f4e8ff'
       }}
     >
       <Header title=" 前撮りフォト" />
@@ -37,6 +38,7 @@ const PhotoGalleryPage: React.FC = () => {
           boxSizing: 'border-box', // ★ 横幅オーバー防止
           overflowX: 'hidden',
           overflowY: "auto", 
+          
         }}
       >
         {photoLinks.map((url, i) => (

@@ -28,6 +28,7 @@ function MenuPage() {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
+        backgroundColor: '#ffdddd'
       }}
     >
       <Header title=" お食事" />
