@@ -50,7 +50,7 @@ const VenueMapPage: React.FC = () => {
             alt="会場MAP"
             style={{
               width: "100%",
-              // height: "90%",
+              height: "auto",
               borderRadius: "10px",
               border: "1px solid #ddd",
             }}

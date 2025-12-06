@@ -48,11 +48,12 @@ export default function GuestApp() {
     return (
       <div
         style={{
-          minHeight: '100dvh', // ← 100vhではなく100dvh
-          overflow: 'hidden', // ← スクロール完全禁止
+          position: 'fixed', // ← これで絶対に画面固定
+          inset: 0, // ← top:0, right:0, bottom:0, left:0
+          overflow: 'hidden', // ← スクロール禁止
           display: 'flex',
           flexDirection: 'column',
-          justifyContent: 'center', // ← 完全中央寄せ
+          justifyContent: 'center',
           alignItems: 'center',
           textAlign: 'center',
           padding: '0 20px',
