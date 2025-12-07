@@ -21,12 +21,12 @@ export default function GuestApp() {
   }, []);
 
   // ---------------------------------------------------------
-  // 🟣 対策② 自動ログアウト（20分）
+  // 🟣 対策② 自動ログアウト（30分）
   // ---------------------------------------------------------
   useEffect(() => {
     if (!guest) return;
 
-    const AUTO_LOGOUT_MIN = 1;
+    const AUTO_LOGOUT_MIN = 30;
     const timer = setTimeout(() => {
       localStorage.removeItem("guest");
       setGuest(null);
@@ -140,7 +140,7 @@ export default function GuestApp() {
             lineHeight: "1.6",
           }}
         >
-          当日のゲストのみなさまに向けて、<br />
+          ゲストのみなさまに向けて、<br />
           必要な情報をまとめたアプリを開発しました。<br />
           気軽に見て楽しんでください。
         </p>
