@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGuest } from "../context/GuestContext";
-import coupleImg from "../assets/IMG_6744.jpg";
+import coupleImg from "../assets/IMG_6744.jpeg";
 
 export default function GuestApp() {
   const [inputCode, setInputCode] = useState('');
