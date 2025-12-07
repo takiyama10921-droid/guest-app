@@ -1,7 +1,8 @@
 // src/pages/GuestApp.tsx
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useGuest } from "../context/GuestContext";
+import coupleImg from "../assets/IMG_6744.jpg";
 
 export default function GuestApp() {
   const [inputCode, setInputCode] = useState('');
@@ -9,14 +10,39 @@ export default function GuestApp() {
   const navigate = useNavigate();
   const { guest, setGuest } = useGuest();
 
-  // ▼ 修正：固定コードでログイン
+  // ---------------------------------------------------------
+  // 🟣 対策① localStorage からログイン状態を復元
+  // ---------------------------------------------------------
+  useEffect(() => {
+    const saved = localStorage.getItem("guest");
+    if (!guest && saved) {
+      setGuest(JSON.parse(saved));
+    }
+  }, []);
+
+  // ---------------------------------------------------------
+  // 🟣 対策② 自動ログアウト（20分）
+  // ---------------------------------------------------------
+  useEffect(() => {
+    if (!guest) return;
+
+    const AUTO_LOGOUT_MIN = 1;
+    const timer = setTimeout(() => {
+      localStorage.removeItem("guest");
+      setGuest(null);
+    }, AUTO_LOGOUT_MIN * 60 * 1000);
+
+    return () => clearTimeout(timer);
+  }, [guest]);
+
+  // 🔑 ログイン処理
   const handleLogin = () => {
     if (inputCode !== '0926') {
       setMessage('※ コードが間違っています');
       return;
     }
 
-    setGuest({
+    const userData = {
       id: 'common',
       name: 'ゲスト',
       seatNumber: '-',
@@ -25,12 +51,30 @@ export default function GuestApp() {
       code: '0926',
       hasTransportationGift: false,
       giftReceivedBefore: false,
-      side: 'groom',
-    });
+    };
+
+    setGuest(userData);
+
+    // ★ localStorage に保存
+    localStorage.setItem("guest", JSON.stringify(userData));
 
     setMessage('');
   };
 
+  // 🔒 戻るボタン無効化
+  useEffect(() => {
+    const handlePopState = () => {
+      window.history.pushState(null, '', window.location.href);
+    };
+    window.history.pushState(null, '', window.location.href);
+    window.addEventListener('popstate', handlePopState);
+
+    return () => {
+      window.removeEventListener('popstate', handlePopState);
+    };
+  }, []);
+
+  // 各ページ遷移
   const handleOpenSeating = () => navigate('/seating');
   const handleOpenMenu = () => navigate('/menu');
   const handleOpenPhoto = () => navigate('/photo');
@@ -40,6 +84,11 @@ export default function GuestApp() {
   const handleOpenVenueMap = () => navigate('/venueMap');
   const handleOpenMessage = () => navigate('/message');
   const handleOpenDrink = () => navigate('/drink');
+
+  // ---------------------------------------------------------
+  // ここから先は UI（元コードそのまま）
+  // ---------------------------------------------------------
+
 
   const memberColors = [
     '#fff9cc', // 岩本：黄色・薄い
@@ -52,108 +101,192 @@ export default function GuestApp() {
     '#ffdddd', // 宮舘：赤・薄い
     '#ffe6f5', // 佐久間：ピンク・薄い
   ];
-  // ログイン前
+
+  // ▼ ログイン前画面（デザインB）
   if (!guest) {
     return (
       <div
         style={{
-          position: 'fixed',
+          position: "fixed",
           inset: 0,
-          overflow: 'hidden',
-          display: 'flex',
-          flexDirection: 'column',
-          justifyContent: 'center',
-          alignItems: 'center',
-          textAlign: 'center',
-          padding: '0 20px',
-          boxSizing: 'border-box',
-          backgroundColor: '#f7f3ff', // ← ★ 追加
+          overflow: "hidden",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          alignItems: "center",
+          textAlign: "center",
+          padding: "0 20px",
+          backgroundColor: "#f7f3ff",
         }}
       >
-        <h1>ようこそ！</h1>
-        <p>QRの下にあるコードを入力してください</p>
+        {/* タイトル */}
+        <h1
+          style={{
+            fontSize: "28px",
+            fontWeight: 700,
+            color: "#4A3F6B",
+            marginBottom: "8px",
+          }}
+        >
+          T & H Wedding App
+        </h1>
+
+        <p
+          style={{
+            fontSize: "14px",
+            color: "#5A4E72",
+            marginTop: "0",
+            marginBottom: "20px",
+            lineHeight: "1.6",
+          }}
+        >
+          当日のゲストのみなさまに向けて、<br />
+          必要な情報をまとめたアプリを開発しました。<br />
+          気軽に見て楽しんでください。
+        </p>
+
+        <p style={{ marginTop: "5px", fontSize: "14px" }}>
+          受付時に確認したコードを入力してください
+        </p>
 
         <input
           type="text"
           value={inputCode}
           onChange={(e) => setInputCode(e.target.value)}
-          placeholder="例:0926"
+          placeholder="例: 0926"
           style={{
-            fontSize: '1.2em',
-            padding: '5px 10px',
-            textAlign: 'center',
-            marginTop: '10px',
+            fontSize: "1.1em",
+            padding: "6px 10px",
+            textAlign: "center",
+            marginTop: "10px",
+            borderRadius: "6px",
+            border: "1px solid #ccc",
           }}
         />
 
         <button
           onClick={handleLogin}
           style={{
-            marginTop: '15px',
-            padding: '8px 16px',
-            fontSize: '1em',
-            cursor: 'pointer',
+            marginTop: "15px",
+            padding: "8px 20px",
+            fontSize: "15px",
+            cursor: "pointer",
+            borderRadius: "6px",
+            backgroundColor: "#eee4ff",
           }}
         >
           決定
         </button>
 
         {message && (
-          <p style={{ color: 'red', marginTop: '10px' }}>{message}</p>
+          <p style={{ color: "red", marginTop: "10px", fontSize: "14px" }}>{message}</p>
         )}
       </div>
     );
   }
 
-  // ログイン後
+  // ▼ ログイン後（デザインB）
   return (
     <div
       style={{
-        textAlign: 'center',
-        // marginTop: '200px',
-        minHeight: '100dvh',
-        backgroundColor: '#f7f3ff', // ← ★ 追加
-        padding: '20px 0',
+        textAlign: "center",
+        minHeight: "100dvh",
+        backgroundColor: "#f7f3ff",
+        padding: "20px 0",
       }}
     >
-      <h1>ようこそ！</h1>
-      <h2>2026.9.26</h2>
+      {/* タイトル */}
+      <div style={{ marginTop: "10px" }}>
+        <h1
+          style={{
+            fontSize: "28px",
+            fontWeight: 700,
+            color: "#4A3F6B",
+            marginBottom: "5px",
+          }}
+        >
+          welcome to Our Wedding
+        </h1>
 
+        <div
+          style={{
+            color: "#D7C3FF",
+            fontSize: "20px",
+            marginBottom: "5px",
+          }}
+        >
+          ♡
+        </div>
+
+        <div
+          style={{
+            width: "70%",
+            height: "2px",
+            backgroundColor: "#D9C8FF",
+            margin: "5px auto 15px",
+            borderRadius: "3px",
+          }}
+        />
+
+        <h2
+          style={{
+            fontSize: "16px",
+            color: "#4A3F6B",
+            marginBottom: "20px",
+          }}
+        >
+          2026.9.26
+        </h2>
+      </div>
+
+      {/* 丸い写真 */}
+      <img
+        src={coupleImg}
+        alt="Welcome"
+        style={{
+          width: "220px",
+          height: "220px",
+          objectFit: "cover",
+          borderRadius: "50%",
+          margin: "10px auto 20px",
+          border: "4px solid white",
+          boxShadow: "0 4px 12px rgba(0,0,0,0.1)",
+        }}
+      />
+
+      {/* グリッドボタン */}
       <div
         style={{
-          display: 'grid',
-          gridTemplateColumns: 'repeat(3, 1fr)',
-          gap: '10px',
-          marginTop: '30px',
-          maxWidth: '400px',
-          margin: '0 auto',
+          display: "grid",
+          gridTemplateColumns: "repeat(3, 1fr)",
+          gap: "10px",
+          maxWidth: "400px",
+          margin: "0 auto",
         }}
       >
         <button onClick={handleOpenSeating} style={{ backgroundColor: memberColors[0] }}>席次表</button>
         <button onClick={handleOpenPhoto} style={{ backgroundColor: memberColors[1] }}>前撮りフォト</button>
-        <button onClick={handleOpenPhotoUpload} style={{ backgroundColor: memberColors[4] }}>
-          写真
-          <br />
-          アップロード
-        </button>
+        <button onClick={handleOpenPhotoUpload} style={{ backgroundColor: memberColors[4] }}>写真<br />アップロード</button>
         <button onClick={handleOpenMenu} style={{ backgroundColor: memberColors[7] }}>お食事</button>
         <button onClick={handleOpenDrink} style={{ backgroundColor: memberColors[2] }}>飲み物</button>
-        <button onClick={handleOpenVenueInfo} style={{ backgroundColor: memberColors[5] }}>
-          ご案内
-          <br />
-          注意事項
-        </button>
+        <button onClick={handleOpenVenueInfo} style={{ backgroundColor: memberColors[5] }}>ご案内<br />注意事項</button>
         <button onClick={handleOpenMessage} style={{ backgroundColor: memberColors[8] }}>メッセージ</button>
         <button onClick={handleOpenProfile} style={{ backgroundColor: memberColors[6] }}>プロフィール</button>
-        <button onClick={handleOpenVenueMap} style={{ backgroundColor: memberColors[3] }}>
-          会場内
-          <br />
-          MAP
-        </button>
+        <button onClick={handleOpenVenueMap} style={{ backgroundColor: memberColors[3] }}>会場内<br />MAP</button>
       </div>
 
-      <div style={{ marginTop: '30px' }}>
-        <button onClick={() => setGuest(null)}>← ログアウト</button>
+      {/* ログアウト */}
+      <div style={{ marginTop: "30px" }}>
+        <button
+          onClick={() => setGuest(null)}
+          style={{
+            backgroundColor: "#fff0fb",
+            padding: "8px 16px",
+            borderRadius: "6px",
+          }}
+        >
+          ← ログアウト
+        </button>
       </div>
     </div>
   );

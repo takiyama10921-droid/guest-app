@@ -44,7 +44,7 @@ const VenueMapPage: React.FC = () => {
             overflowY: 'auto',
           }}
         >
-          <h3 style={{ marginTop: 0 }}>🔍 会場配置図</h3>
+          <h3 style={{ marginTop: 0 }}>🔍 会場地図</h3>
           <p style={{ margin: '4px 0 12px', color: '#555' }}>
             受付・披露宴会場・控室などの位置関係をご確認ください。
           </p>

@@ -6,7 +6,7 @@ type HeaderProps = {
   bgColor?: string;
 };
 
-const Header: React.FC<HeaderProps> = ({ title, bgColor = "#ffffff" }) => {
+const Header: React.FC<HeaderProps> = ({ title}) => {
   const navigate = useNavigate();
 
   return (
@@ -17,7 +17,7 @@ const Header: React.FC<HeaderProps> = ({ title, bgColor = "#ffffff" }) => {
         left: 0,
         width: "100%",
         height: "56px",
-        background: bgColor,
+        background: "#F7F3FF",
         display: "flex",
         alignItems: "center",
         borderBottom: "1px solid #ddd",

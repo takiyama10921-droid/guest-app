@@ -9,5 +9,5 @@ export interface User {
   hasTransportationGift: boolean;
   //ご祝儀事前受取済みか
   giftReceivedBefore: boolean;
-  side: "groom" | "bride";
+  // side: "groom" | "bride";
 }
