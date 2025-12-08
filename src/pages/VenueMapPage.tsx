@@ -23,7 +23,7 @@ const VenueMapPage: React.FC = () => {
         style={{
           flex: 1,
           overflowY: 'auto', // ← スクロールはここだけ
-          padding: '56px 0 20px', // ヘッダー分＋余白
+          padding: '76px 0 20px', // ヘッダー分＋余白
           display: 'flex',
           justifyContent: 'center',
         }}

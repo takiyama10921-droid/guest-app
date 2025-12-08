@@ -21,7 +21,7 @@ const VenueInfoPage: React.FC = () => {
         style={{
           flex: 1,
           overflowY: "auto",        // ← ここだけスクロール
-          padding: "80px 0 20px",   // ヘッダー分の余白 + 下に少し余裕
+          padding: "76px 0 20px",   // ヘッダー分の余白 + 下に少し余裕
         }}
       >
         {/* 披露宴会場（カード） */}
