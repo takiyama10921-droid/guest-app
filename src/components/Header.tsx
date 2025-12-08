@@ -21,6 +21,7 @@ const Header: React.FC<HeaderProps> = ({ title}) => {
         display: "flex",
         alignItems: "center",
         borderBottom: "1px solid #ddd",
+        touchAction: "manipulation",
         zIndex: 1000,
         padding: "0 16px",       // ← 安全な左右余白
         boxSizing: "border-box", // ← ★ 横スクロール防止の決め手
@@ -31,7 +32,7 @@ const Header: React.FC<HeaderProps> = ({ title}) => {
       <button
         onClick={() => navigate(-1)}
         style={{
-          padding: "6px 12px",
+          padding: "9px 12px",
           borderRadius: "8px",
           border: "1px solid #ccc",
           background: "#f7f7f7",

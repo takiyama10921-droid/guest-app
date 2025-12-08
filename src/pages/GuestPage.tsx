@@ -205,7 +205,7 @@ export default function GuestApp() {
             marginBottom: "5px",
           }}
         >
-          welcome to Our Wedding
+          Welcome to Our Wedding
         </h1>
 
         <div
