@@ -138,7 +138,7 @@ const MessagePage: React.FC = () => {
       <div
         style={{
           position: 'fixed',
-          top: '300px',
+          top: '350px',
           left: '50%',
           transform: 'translateX(-50%)',
           width: '95%',
