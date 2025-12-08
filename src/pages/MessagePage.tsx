@@ -111,7 +111,7 @@ const MessagePage: React.FC = () => {
           left: '50%',
           transform: 'translateX(-50%)',
           width: '95%',
-          maxWidth: '420px',
+          maxWidth: '500px',
           background: '#FFF7E6',
           padding: '10px 14px',
           borderRadius: '10px',
@@ -124,18 +124,25 @@ const MessagePage: React.FC = () => {
         }}
       >
         新郎新婦に向けて、メッセージをお寄せください！<br />
-        <strong>Twitter</strong> 風に投稿していただくのも大歓迎です！
+        いただいたメッセージは後日、二人で大切に読ませていただきます。<br />
+        また、投稿前に下記のご確認をお願いします。<br />
+        <br />
+        ・お名前は、新郎新婦がわかる名前（ニックネーム可）でお願いします。<br />
+        ・2回目以降の投稿は、1回目の投稿と同じ名前を使うようお願いします。<br />
+        ・公序良俗に反する投稿は控えてください。<br />
+        ・<strong>Twitter</strong> 風につぶやきを投稿していただくのも大歓迎です。<br />
+        ・投稿は複数回可能ですので、皆様のメッセージお待ちしております。<br />
       </div>
 
       {/* --- フォーム固定 --- */}
       <div
         style={{
           position: 'fixed',
-          top: '150px',
+          top: '280px',
           left: '50%',
           transform: 'translateX(-50%)',
           width: '95%',
-          maxWidth: '420px',
+          maxWidth: '500px',
           background: 'white',
           padding: '16px',
           borderRadius: '12px',
