@@ -14,7 +14,6 @@ const ProfilePage: React.FC = () => {
         display: 'flex',
         flexDirection: 'column',
         overflow: 'hidden',
-        backgroundColor: '#f0f0f0'
       }}
     >
       {/* 固定ヘッダー */}
@@ -40,6 +39,7 @@ const ProfilePage: React.FC = () => {
             borderRadius: '12px',
             boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
             textAlign: 'left',
+            backgroundColor: '#f0f0f0'
           }}
         >
           <h3 style={{ margin: 0 }}>👦 新郎プロフィール</h3>
@@ -79,6 +79,7 @@ const ProfilePage: React.FC = () => {
             borderRadius: '12px',
             boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
             textAlign: 'left',
+            backgroundColor: '#f0f0f0'
           }}
         >
           <h3 style={{ margin: 0 }}>👰 新婦プロフィール</h3>
@@ -120,6 +121,7 @@ const ProfilePage: React.FC = () => {
             padding: '16px',
             borderRadius: '12px',
             boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+            backgroundColor: '#f0f0f0'
           }}
         >
           <h3 style={{ marginTop: 0 }}>📖 2人のストーリー</h3>
@@ -151,6 +153,7 @@ const ProfilePage: React.FC = () => {
             padding: '16px',
             borderRadius: '12px',
             boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
+            backgroundColor: '#f0f0f0'
           }}
         >
           <h3 style={{ marginTop: 0 }}>❓ Q&A（仮）</h3>

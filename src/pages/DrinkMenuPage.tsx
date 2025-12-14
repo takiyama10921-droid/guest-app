@@ -2,11 +2,35 @@ import React, { useEffect } from "react";
 import Header from "../components/Header";
 
 const DrinkMenuPage: React.FC = () => {
+  const alcoholList = [
+    { name: 'ビール' },
+    { name: '赤ワイン' },
+    { name: '白ワイン' },
+    { name: 'スパークリングワイン' },
+    { name: '日本酒（田酒）', options: ['冷', '常温'] },
+    { name: '米焼酎（鳥飼）', options: ['ソーダ割', 'ロック', '水割り'] },
+    { name: 'ウイスキー（碧）', options: ['ハイボール', 'ロック'] },
+  ];
+  const softDrinkList = [
+    { name: 'オレンジジュース' },
+    { name: 'コーラ' },
+    { name: 'ジンジャーエール' },
+    { name: 'グレープジュース' },
+    { name: 'ウーロン茶' },
+  ];
+
+
   useEffect(() => {
       window.scrollTo(0, 0);
     }, []);
   return (
-    <div style={{ height: '100dvh', overflow: 'hidden', backgroundColor: '#ffffff' }}>
+    <div
+      style={{
+        height: '100dvh',
+        overflow: 'hidden',
+        backgroundColor: '#ffffff',
+      }}
+    >
       {/* 固定ヘッダー */}
       <Header title="飲み物" />
 
@@ -77,28 +101,30 @@ const DrinkMenuPage: React.FC = () => {
         {/* 🍺 アルコール */}
         <h3>アルコール</h3>
         <ul style={{ listStyle: 'none', padding: 0, lineHeight: '1.8' }}>
-          <li>・ ビール</li>
-          <li>・ 赤ワイン</li>
-          <li>・ 白ワイン</li>
-          <li>・ スパークリングワイン</li>
-          <li>・ 日本酒（田酒）</li>
-          <li>・ カシスオレンジ</li>
-          <li>・ 米焼酎（鳥飼）</li>
-          <li>・ ハイボール（碧）</li>
+          {alcoholList.map((drink) => (
+            <li key={drink.name}>
+              ・ {drink.name}
+              {drink.options && (
+                <span style={{ fontSize: '12px', color: '#777' }}>
+                  （{drink.options.join(' / ')}）
+                </span>
+              )}
+            </li>
+          ))}
         </ul>
 
         {/* 🥤 ソフトドリンク */}
         <h3 style={{ marginTop: '24px' }}>ソフトドリンク</h3>
         <ul style={{ listStyle: 'none', padding: 0, lineHeight: '1.8' }}>
-          <li>・ オレンジジュース</li>
-          <li>・ コーラ</li>
-          <li>・ ジンジャーエール</li>
-          <li>・ グレープジュース</li>
-          <li>・ ウーロン茶</li>
+          {softDrinkList.map((drink) => (
+            <li key={drink.name}>
+              ・ {drink.name}
+            </li>
+          ))}
         </ul>
 
         <p style={{ marginTop: '30px', fontSize: '13px', color: '#666' }}>
-          ※ 田酒、鳥飼、碧については、持ち込みのため品切れになる可能性があります。
+          ※田酒、鳥飼、碧については、持ち込みのため品切れになる可能性があります。
         </p>
       </div>
     </div>

@@ -60,8 +60,8 @@ export default function PhotoUploadPage() {
         </a>
 
         <div style={{ marginTop: "30px", color: "#444", fontSize: "0.9em" }}>
-          <p>※ Googleアカウントにログインしてアップロードしてください</p>
-          <p>※ 動画もアップロード可能です</p>
+          <p>※ Googleドライブへのアップロードになります。</p>
+          <p>※ 動画のアップロードもぜひお願いします。</p>
         </div>
       </div>
     </div>
