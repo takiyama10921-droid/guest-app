@@ -14,6 +14,7 @@ import MessagePage from "./pages/MessagePage";
 import PhotoUploadPage from "./pages/PhotoUploadPage";
 import MessageListPage from "./pages/MessageListPage";
 import DrinkMenuPage from "./pages/DrinkMenuPage";
+import { ReceptionSummary } from "./pages/ReceptionSummaryPage";
 
 function App() {
   return (
@@ -34,6 +35,8 @@ function App() {
           <Route path="/photoUpload" element={<PhotoUploadPage />} />
           <Route path="/messageList" element={<MessageListPage />} />
           <Route path="/drink" element={<DrinkMenuPage />} />
+          <Route path="/groomSummary" element={<ReceptionSummary side={"groom"} />} />
+          <Route path="/brideSummary" element={<ReceptionSummary side={"bride"} />} />
         </Routes>
       </Router>
     </GuestProvider>

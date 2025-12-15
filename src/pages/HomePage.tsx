@@ -17,6 +17,10 @@ export default function HomePage() {
       <Link to="/reception/TH01">Th01のゲストのReceptionページへ</Link>
       <br />
       <Link to="/messageList">MessageListページへ</Link>
+      <br />
+      <Link to="/groomSummary">新郎ゲストListページへ</Link>
+      <br />
+      <Link to="/brideSummary">新婦ゲストListページへ</Link>
     </div>
   );
 }

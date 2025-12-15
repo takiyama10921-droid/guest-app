@@ -5,9 +5,13 @@ export interface User {
   message: string;
   code: string;
   checkedin: boolean;
-  //お車代
+  //お車代　ありならtrue
   hasTransportationGift: boolean;
+  // 実際に渡したらtrue
+  transportationGiftGiven: boolean;
+
   //ご祝儀事前受取済みか
   giftReceivedBefore: boolean;
-  // side: "groom" | "bride";
+  // 新郎側か新婦側か（"groom" | "bride"）
+  side: "groom" | "bride";
 }
