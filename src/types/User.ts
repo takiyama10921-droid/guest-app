@@ -13,5 +13,5 @@ export interface User {
   //ご祝儀事前受取済みか
   giftReceivedBefore: boolean;
   // 新郎側か新婦側か（"groom" | "bride"）
-  side: "groom" | "bride";
+  side: string;
 }

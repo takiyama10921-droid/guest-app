@@ -51,6 +51,8 @@ export default function GuestApp() {
       code: '0926',
       hasTransportationGift: false,
       giftReceivedBefore: false,
+      transportationGiftGiven: false,
+      side: "groom"
     };
 
     setGuest(userData);
