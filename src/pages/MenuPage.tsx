@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router-dom";
-import menu from "../assets/menu.png";
+import menu from "../assets/menu.jpg";
 import { useGuest } from "../context/GuestContext";
 import Header from "../components/Header";
 import { useEffect } from "react";
