@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import type { User } from "../types/User";
 import { query, collection, where, getDocs } from "firebase/firestore";
 import { db } from "../firebase";
+import Header from "../components/Header"; // ① 追加
 
 type Props = {
   side: "groom" | "bride";
@@ -34,44 +35,49 @@ export function ReceptionSummary({ side }: Props) {
   const allCheckedIn = guests.every((g) => g.checkedin);
 
   return (
-    <div>
-      <h2>{side === "groom" ? "新郎側" : "新婦側"} 一覧</h2>
+    <>
+      {/* ② ヘッダー */}
+      <Header title={"ゲスト一覧"} />
 
-      {/* ⭐ 全員受付完了表示 */}
-      {allCheckedIn ? (
-        <p style={{ color: "green", fontWeight: "bold" }}>
-          ✅ 全員受付完了
-        </p>
-      ) : (
-        <p style={{ color: "red" }}>
-          ❌ 未受付あり
-        </p>
-      )}
+      <div style={{ padding: "50px" }}>
+        <h2>{side === "groom" ? "新郎側" : "新婦側"} 一覧</h2>
 
-      <table>
-        <thead>
-          <tr>
-            <th>名前</th>
-            <th>受付</th>
-            <th>ご祝儀</th>
-            <th>お車代</th>
-          </tr>
-        </thead>
-        <tbody>
-          {guests.map((g) => (
-            <tr key={g.id}>
-              <td>{g.name}</td>
-              <td>{g.checkedin ? "✅" : "❌"}</td>
-              <td>{g.giftReceivedBefore ? "💴" : "❌"}</td>
-              <td>
-                {!g.hasTransportationGift && "―"}
-                {g.hasTransportationGift &&
-                  (g.transportationGiftGiven ? "🚗" : "❌")}
-              </td>
+        {/* 全員受付完了表示 */}
+        {allCheckedIn ? (
+          <p style={{ color: "green", fontWeight: "bold" }}>
+            ✅ 全員受付完了
+          </p>
+        ) : (
+          <p style={{ color: "red" }}>
+            ❌ 未受付あり
+          </p>
+        )}
+
+        <table>
+          <thead>
+            <tr>
+              <th>名前</th>
+              <th>受付</th>
+              <th>ご祝儀</th>
+              <th>お車代</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+          </thead>
+          <tbody>
+            {guests.map((g) => (
+              <tr key={g.id}>
+                <td>{g.name}</td>
+                <td>{g.checkedin ? "✅" : "❌"}</td>
+                <td>{g.giftReceivedBefore ? "💴" : "❌"}</td>
+                <td>
+                  {!g.hasTransportationGift && "―"}
+                  {g.hasTransportationGift &&
+                    (g.transportationGiftGiven ? "🚗" : "❌")}
+                </td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </>
   );
 }

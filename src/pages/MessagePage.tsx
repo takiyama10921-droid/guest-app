@@ -24,6 +24,8 @@ const MessagePage: React.FC = () => {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
   const [sentList, setSentList] = useState<MessageType[]>([]);
+  const [showSuccessModal, setShowSuccessModal] = useState(false);
+
 
   // 名前読み込み
   useEffect(() => {
@@ -66,17 +68,23 @@ const MessagePage: React.FC = () => {
     const newMessage = { name, text, time: Timestamp.now() };
 
     try {
-      const docRef = await addDoc(collection(db, 'messages'), newMessage);
-      setSentList([
-        ...sentList,
-        { id: docRef.id, name, text, time: new Date() },
-      ]);
+      await addDoc(collection(db, 'messages'), newMessage);
+
       localStorage.setItem('guestName', name);
       setText('');
+
+      // ⭐ 成功モーダル表示
+      setShowSuccessModal(true);
+
+      // ⏱ 3秒後に自動で閉じる（任意）
+      setTimeout(() => {
+        setShowSuccessModal(false);
+      }, 3000);
     } catch (err) {
       console.error('メッセージ送信失敗', err);
     }
   };
+
 
   // 削除
   // const handleDelete = async (id: string) => {
@@ -120,18 +128,25 @@ const MessagePage: React.FC = () => {
           color: '#8A5B00',
           fontSize: '14px',
           textAlign: 'left',
-          backgroundColor: '#ffe6f5'
+          backgroundColor: '#ffe6f5',
         }}
       >
-        新郎新婦に向けて、メッセージをお寄せください！<br />
-        いただいたメッセージは後日、<br />
-        二人で大切に読ませていただきます。<br />
-        また、投稿前に下記のご確認をお願いします。<br />
+        新郎新婦に向けて、メッセージをお寄せください！
         <br />
-        ・お名前は、新郎新婦がわかる名前でお願いします。<br />
-        ・公序良俗に反する投稿は控えてください。<br />
-        ・<strong>Twitter</strong> 風のつぶやき投稿も大歓迎です。<br />
-        ・投稿は複数回可能です。<br />
+        いただいたメッセージは後日、
+        <br />
+        二人で大切に読ませていただきます。
+        <br />
+        また、投稿前に下記のご確認をお願いします。
+        <br />
+        <br />
+        ・お名前は、新郎新婦がわかる名前でお願いします。
+        <br />
+        ・公序良俗に反する投稿は控えてください。
+        <br />・<strong>Twitter</strong> 風のつぶやき投稿も大歓迎です。
+        <br />
+        ・投稿は複数回可能です。
+        <br />
       </div>
 
       {/* --- フォーム固定 --- */}
@@ -148,7 +163,7 @@ const MessagePage: React.FC = () => {
           borderRadius: '12px',
           boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
           zIndex: 20,
-          backgroundColor: '#ffe6f5'
+          backgroundColor: '#ffe6f5',
         }}
       >
         <h3 style={{ marginTop: 0 }}>✏️ メッセージを書く</h3>
@@ -196,6 +211,59 @@ const MessagePage: React.FC = () => {
           送信する
         </button>
       </div>
+
+      {/* --- 送信完了モーダル --- */}
+      {showSuccessModal && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100dvh',
+            background: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+          }}
+        >
+          <div
+            style={{
+              background: 'white',
+              padding: '24px',
+              borderRadius: '16px',
+              width: '90%',
+              maxWidth: '360px',
+              textAlign: 'center',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+            }}
+          >
+            <h3 style={{ marginTop: 0 }}>🎉 送信完了</h3>
+
+            <p style={{ fontSize: '14px', lineHeight: 1.6 }}>
+              メッセージを送信しました。
+              <br />
+              新郎新婦にしっかり届いています！
+            </p>
+
+            <button
+              onClick={() => setShowSuccessModal(false)}
+              style={{
+                marginTop: '16px',
+                padding: '10px 20px',
+                background: '#4F46E5',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                fontWeight: 'bold',
+              }}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
 
       {/* --- タイトル固定 --- */}
       {/* <div

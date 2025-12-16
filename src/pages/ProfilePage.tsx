@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 import Header from "../components/Header";
-import groomImg from "../assets/IMG_6736.png";  // 新郎写真
-import brideImg from "../assets/IMG_6711.png";  // 新婦写真
+import groomImg from "../../public/photos/full/IMG_6736.jpg";  // 新郎写真
+import brideImg from "../../public/photos/full/IMG_6711.jpg";  // 新婦写真
 
 const ProfilePage: React.FC = () => {
   useEffect(() => {
