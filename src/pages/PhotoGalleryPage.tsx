@@ -40,6 +40,10 @@ const PhotoGalleryPage: React.FC = () => {
 
   const closeModal = () => {
     setModalUrl(null);
+    // ★ モーダル用に積んだ履歴を戻す
+    if (window.history.state?.modal) {
+      window.history.back();
+    }
   };
 
   return (
