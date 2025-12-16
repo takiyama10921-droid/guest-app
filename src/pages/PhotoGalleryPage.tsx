@@ -6,24 +6,11 @@ type Photo = {
   full: string;
 };
 
-// ★ サムネ・フルをペアで定義
 const photos: Photo[] = [
-  {
-    thumb: "/photos/thumb/IMG_6482.jpg",
-    full: "/photos/full/IMG_6482.jpg",
-  },
-  {
-    thumb: "/photos/thumb/IMG_6331.jpg",
-    full: "/photos/full/IMG_6331.jpg",
-  },
-  {
-    thumb: "/photos/thumb/IMG_6736.jpg",
-    full: "/photos/full/IMG_6736.jpg",
-  },
-  {
-    thumb: "/photos/thumb/IMG_6711.jpg",
-    full: "/photos/full/IMG_6711.jpg",
-  }
+  { thumb: "/photos/thumb/IMG_6482.jpg", full: "/photos/full/IMG_6482.jpg" },
+  { thumb: "/photos/thumb/IMG_6331.jpg", full: "/photos/full/IMG_6331.jpg" },
+  { thumb: "/photos/thumb/IMG_6736.jpg", full: "/photos/full/IMG_6736.jpg" },
+  { thumb: "/photos/thumb/IMG_6711.jpg", full: "/photos/full/IMG_6711.jpg" },
 ];
 
 const PhotoGalleryPage: React.FC = () => {
@@ -33,28 +20,41 @@ const PhotoGalleryPage: React.FC = () => {
     window.scrollTo(0, 0);
   }, []);
 
+  // ★ 戻るボタン対策
+  useEffect(() => {
+    const handlePopState = () => {
+      if (modalUrl) {
+        setModalUrl(null); // モーダルだけ閉じる
+      }
+    };
+
+    window.addEventListener("popstate", handlePopState);
+    return () => window.removeEventListener("popstate", handlePopState);
+  }, [modalUrl]);
+
+  const openModal = (url: string) => {
+    // ★ モーダル用に履歴を1つ積む
+    window.history.pushState({ modal: true }, "");
+    setModalUrl(url);
+  };
+
+  const closeModal = () => {
+    setModalUrl(null);
+  };
+
   return (
-    <div
-      style={{
-        height: "100dvh",
-        overflow: "hidden",
-        backgroundColor: "#f4e8ff",
-      }}
-    >
+    <div style={{ height: "100dvh", overflow: "hidden", backgroundColor: "#f4e8ff" }}>
       <Header title=" 前撮りフォト" />
 
-      {/* ギャラリー（サムネイル） */}
+      {/* ギャラリー */}
       <div
         style={{
           display: "grid",
           gridTemplateColumns: "repeat(3, 1fr)",
           gap: "10px",
-          width: "100%",
           maxWidth: "600px",
-          margin: "0 auto",
+          margin: "56px auto 0",
           padding: "10px",
-          marginTop: "56px",
-          boxSizing: "border-box",
           overflowY: "auto",
         }}
       >
@@ -62,31 +62,26 @@ const PhotoGalleryPage: React.FC = () => {
           <img
             key={i}
             src={photo.thumb}
-            alt=""
-            loading="lazy" // ★ 遅延読み込み
+            loading="lazy"
             style={{
               width: "100%",
               aspectRatio: "1 / 1",
               borderRadius: "12px",
               objectFit: "cover",
               cursor: "pointer",
-              boxShadow: "0 2px 6px rgba(0,0,0,0.2)",
             }}
-            onClick={() => setModalUrl(photo.full)}
+            onClick={() => openModal(photo.full)}
           />
         ))}
       </div>
 
-      {/* モーダル（高解像度） */}
+      {/* モーダル */}
       {modalUrl && (
         <div
-          onClick={() => setModalUrl(null)}
+          onClick={closeModal}
           style={{
             position: "fixed",
-            top: 0,
-            left: 0,
-            width: "100vw",
-            height: "100dvh",
+            inset: 0,
             background: "rgba(0,0,0,0.8)",
             display: "flex",
             alignItems: "center",
@@ -94,11 +89,10 @@ const PhotoGalleryPage: React.FC = () => {
             zIndex: 9999,
           }}
         >
-          {/* 閉じるボタン */}
           <button
             onClick={(e) => {
               e.stopPropagation();
-              setModalUrl(null);
+              closeModal();
             }}
             style={{
               position: "absolute",
@@ -110,15 +104,12 @@ const PhotoGalleryPage: React.FC = () => {
               border: "none",
               cursor: "pointer",
             }}
-            aria-label="閉じる"
           >
             ×
           </button>
 
-          {/* 拡大画像 */}
           <img
             src={modalUrl}
-            alt=""
             onClick={(e) => e.stopPropagation()}
             style={{
               maxWidth: "90%",
