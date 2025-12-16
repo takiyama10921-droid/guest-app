@@ -1,4 +1,4 @@
 https://squoosh.app/　
 上記サイトにて変換する。
 
-⓵Widthを500pxに変換すること
+⓵Widthを300pxに変換すること
