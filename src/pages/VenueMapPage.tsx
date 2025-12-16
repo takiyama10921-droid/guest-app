@@ -1,6 +1,6 @@
 import React, { useEffect } from "react";
 import Header from "../components/Header";
-import mapImage from "../assets/img_access01.jpg";
+import mapImage from "../assets/map.jpg";
 
 const VenueMapPage: React.FC = () => {
   useEffect(() => {
