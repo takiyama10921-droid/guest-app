@@ -117,6 +117,7 @@ const MessagePage: React.FC = () => {
             marginBottom: '10px',
             borderRadius: '6px',
             border: '1px solid #ccc',
+            fontSize: '16px',
           }}
         />
 
@@ -131,6 +132,7 @@ const MessagePage: React.FC = () => {
             borderRadius: '6px',
             border: '1px solid #ccc',
             marginBottom: '10px',
+            fontSize: '16px',
           }}
         />
 
