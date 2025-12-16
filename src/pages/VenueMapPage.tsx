@@ -4,65 +4,58 @@ import mapImage from "../assets/map.jpg";
 
 const VenueMapPage: React.FC = () => {
   useEffect(() => {
-      window.scrollTo(0, 0);
-    }, []);
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div
       style={{
-        height: 'auto', // 画面全体
-        display: 'flex',
-        flexDirection: 'column',
-        overflow: 'hidden', // ページ全体のスクロール禁止
+        height: "100dvh",
+        display: "flex",
+        flexDirection: "column",
+        overflow: "hidden", // ★ 全体スクロール禁止
+        backgroundColor: "#e3f0ff",
       }}
     >
-      {/* 固定ヘッダー */}
+      {/* ヘッダー */}
       <Header title=" 会場MAP" />
 
-      {/* 固定ヘッダーの下だけスクロール領域にする */}
+      {/* コンテンツ（スクロールさせない） */}
       <div
         style={{
           flex: 1,
-          overflowY: 'auto', // ← スクロールはここだけ
-          padding: '76px 0 20px', // ヘッダー分＋余白
-          display: 'flex',
-          justifyContent: 'center',
+          paddingTop: "76px", // ヘッダー分
+          display: "flex",
+          justifyContent: "center",
+          alignItems: "center",
         }}
       >
         <div
           style={{
-            width: '90%',
-            maxWidth: '430px',
-            background: '#ffffff',
-            padding: '16px',
-            borderRadius: '12px',
-            boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
-            textAlign: 'left',
-            boxSizing: 'border-box',
-            backgroundColor: '#e3f0ff',
-            // ★ 追加：カード自体の高さを画面に収める
-            maxHeight: 'calc(100dvh - 100px)',
-            overflowY: 'auto',
+            width: "90%",
+            maxWidth: "430px",
+            background: "#fff",
+            padding: "16px",
+            borderRadius: "12px",
+            boxShadow: "0 2px 6px rgba(0,0,0,0.15)",
+            boxSizing: "border-box",
           }}
         >
           <h3 style={{ marginTop: 0 }}>🔍 会場地図</h3>
-          <p style={{ margin: '4px 0 12px', color: '#555' }}>
-            受付・披露宴会場・控室などの位置関係をご確認ください。
-          </p>
 
           <img
             src={mapImage}
             alt="会場MAP"
             style={{
-              width: '100%',
-              height: 'auto',
-              maxHeight: 'calc(100dvh - 140px)', // ★★ これが超重要 ★★
-              objectFit: 'contain', // はみ出さず収める
-              borderRadius: '10px',
-              border: '1px solid #ddd',
+              width: "100%",
+              maxHeight: "calc(100dvh - 200px)", // ★ 画面内に必ず収める
+              objectFit: "contain",
+              borderRadius: "10px",
+              border: "1px solid #ddd",
             }}
           />
 
-          <p style={{ marginTop: '12px', color: '#666', fontSize: '14px' }}>
+          <p style={{ marginTop: "8px", color: "#666", fontSize: "14px" }}>
             ※ ご不明な点があれば、お近くのスタッフへお声がけください。
           </p>
         </div>
