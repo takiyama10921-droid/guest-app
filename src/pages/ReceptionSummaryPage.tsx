@@ -11,6 +11,8 @@ type Props = {
 export function ReceptionSummary({ side }: Props) {
   const [guests, setGuests] = useState<User[]>([]);
   const [loading, setLoading] = useState(true);
+  const [showOnlyUnchecked, setShowOnlyUnchecked] = useState(false);
+
 
   useEffect(() => {
     const fetchGuests = async () => {
@@ -33,50 +35,116 @@ export function ReceptionSummary({ side }: Props) {
   if (loading) return <p>読み込み中...</p>;
 
   const allCheckedIn = guests.every((g) => g.checkedin);
+  const visibleGuests = showOnlyUnchecked
+  ? guests.filter((g) => !g.checkedin)
+  : guests;
 
   return (
     <>
       {/* ② ヘッダー */}
-      <Header title={"ゲスト一覧"} />
+      <Header title={'ゲスト一覧'} />
 
-      <div style={{ padding: "50px" }}>
-        <h2>{side === "groom" ? "新郎側" : "新婦側"} 一覧</h2>
+      <div style={{ paddingTop: '56px' }}>
+        <Header title={'ゲスト一覧'} />
 
-        {/* 全員受付完了表示 */}
-        {allCheckedIn ? (
-          <p style={{ color: "green", fontWeight: "bold" }}>
-            ✅ 全員受付完了
-          </p>
-        ) : (
-          <p style={{ color: "red" }}>
-            ❌ 未受付あり
-          </p>
-        )}
+        <div style={{ padding: '16px' }}>
+          <h2>{side === 'groom' ? '新郎側' : '新婦側'} 一覧</h2>
 
-        <table>
-          <thead>
-            <tr>
-              <th>名前</th>
-              <th>受付</th>
-              <th>ご祝儀</th>
-              <th>お車代</th>
-            </tr>
-          </thead>
-          <tbody>
-            {guests.map((g) => (
-              <tr key={g.id}>
-                <td>{g.name}</td>
-                <td>{g.checkedin ? "✅" : "❌"}</td>
-                <td>{g.giftReceivedBefore ? "💴" : "❌"}</td>
-                <td>
-                  {!g.hasTransportationGift && "―"}
-                  {g.hasTransportationGift &&
-                    (g.transportationGiftGiven ? "🚗" : "❌")}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+          {allCheckedIn ? (
+            <p style={{ color: 'green', fontWeight: 'bold' }}>
+              ✅ 全員受付完了
+            </p>
+          ) : (
+            <p style={{ color: 'red', fontWeight: 'bold' }}>❌ 未受付あり</p>
+          )}
+
+          <label
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              gap: '8px',
+              marginBottom: '12px',
+            }}
+          >
+            <input
+              type="checkbox"
+              checked={showOnlyUnchecked}
+              onChange={(e) => setShowOnlyUnchecked(e.target.checked)}
+            />
+            未受付のみ表示
+          </label>
+
+          {/* ===== ヘッダー行 ===== */}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: '2fr 1fr 1fr 1fr',
+              gap: '8px',
+              fontWeight: 'bold',
+              marginBottom: '8px',
+              textAlign: 'center',
+            }}
+          >
+            <div>名前</div>
+            <div>受付</div>
+            <div>ご祝儀</div>
+            <div>お車代</div>
+          </div>
+
+          {/* ===== 一覧（縦スクロール） ===== */}
+          <div
+            style={{
+              maxHeight: '60vh',
+              overflowY: 'auto',
+              display: 'flex',
+              flexDirection: 'column',
+              gap: '8px',
+            }}
+          >
+            {visibleGuests.map((g) => {
+              const isUnchecked = !g.checkedin;
+              const transportationNotGiven =
+                g.hasTransportationGift && !g.transportationGiftGiven;
+
+              return (
+                <div
+                  key={g.id}
+                  style={{
+                    display: 'grid',
+                    gridTemplateColumns: '2fr 1fr 1fr 1fr',
+                    gap: '8px',
+                    padding: '10px',
+                    borderRadius: '10px',
+                    background: isUnchecked ? '#ffe5e5' : '#fff', // ★ 未受付は薄赤
+                    boxShadow: '0 1px 4px rgba(0,0,0,0.15)',
+                    alignItems: 'center',
+                    textAlign: 'center',
+                  }}
+                >
+                  <div style={{ textAlign: 'left', fontWeight: 'bold' }}>
+                    {g.name}
+                  </div>
+
+                  <div>{g.checkedin ? '✅' : '❌'}</div>
+
+                  <div>{g.giftReceivedBefore ? '💴' : '❌'}</div>
+
+                  {/* お車代 */}
+                  <div
+                    style={{
+                      fontWeight: transportationNotGiven ? 'bold' : 'normal',
+                      color: transportationNotGiven ? 'red' : 'inherit',
+                    }}
+                  >
+                    {!g.hasTransportationGift && '―'}
+                    {g.hasTransportationGift &&
+                      (g.transportationGiftGiven ? '🚗' : '❌')}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
       </div>
     </>
   );
