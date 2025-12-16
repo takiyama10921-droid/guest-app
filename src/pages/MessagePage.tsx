@@ -13,17 +13,18 @@ const MessagePage: React.FC = () => {
   const [name, setName] = useState('');
   const [text, setText] = useState('');
   const [showSuccessModal, setShowSuccessModal] = useState(false);
+  const [showErrorModal, setShowErrorModal] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
+
 
 
   // 名前読み込み
-  useEffect(() => {
-    const savedName = localStorage.getItem('guestName');
-    if (savedName) setName(savedName);
-  }, []);
-
-  // 送信処理
   const handleSubmit = async () => {
-    if (!name || !text) return;
+    if (!name.trim() || !text.trim()) {
+      setErrorMessage('お名前とメッセージを入力してください！');
+      setShowErrorModal(true);
+      return;
+    }
 
     const newMessage = { name, text, time: Timestamp.now() };
 
@@ -33,10 +34,8 @@ const MessagePage: React.FC = () => {
       localStorage.setItem('guestName', name);
       setText('');
 
-      // ⭐ 成功モーダル表示
       setShowSuccessModal(true);
 
-      // ⏱ 3秒後に自動で閉じる（任意）
       setTimeout(() => {
         setShowSuccessModal(false);
       }, 3000);
@@ -44,6 +43,7 @@ const MessagePage: React.FC = () => {
       console.error('メッセージ送信失敗', err);
     }
   };
+
 
   return (
     <div style={{ paddingBottom: '40px', backgroundColor: '#ffe6f5' }}>
@@ -193,6 +193,57 @@ const MessagePage: React.FC = () => {
                 marginTop: '16px',
                 padding: '10px 20px',
                 background: '#4F46E5',
+                color: 'white',
+                border: 'none',
+                borderRadius: '8px',
+                fontWeight: 'bold',
+              }}
+            >
+              OK
+            </button>
+          </div>
+        </div>
+      )}
+
+      {/* --- 入力エラーモーダル --- */}
+      {showErrorModal && (
+        <div
+          style={{
+            position: 'fixed',
+            top: 0,
+            left: 0,
+            width: '100vw',
+            height: '100dvh',
+            background: 'rgba(0,0,0,0.5)',
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            zIndex: 9999,
+          }}
+        >
+          <div
+            style={{
+              background: 'white',
+              padding: '24px',
+              borderRadius: '16px',
+              width: '90%',
+              maxWidth: '360px',
+              textAlign: 'center',
+              boxShadow: '0 4px 10px rgba(0,0,0,0.2)',
+            }}
+          >
+            <h3 style={{ marginTop: 0, color: '#D32F2F' }}>
+              ⚠️ 入力してください
+            </h3>
+
+            <p style={{ fontSize: '14px', lineHeight: 1.6 }}>{errorMessage}</p>
+
+            <button
+              onClick={() => setShowErrorModal(false)}
+              style={{
+                marginTop: '16px',
+                padding: '10px 20px',
+                background: '#D32F2F',
                 color: 'white',
                 border: 'none',
                 borderRadius: '8px',
