@@ -97,7 +97,7 @@ const MessagePage: React.FC = () => {
           width: '95%',
           maxWidth: '500px',
           background: 'white',
-          padding: '16px',
+          padding: '12px',
           borderRadius: '12px',
           boxShadow: '0 2px 6px rgba(0,0,0,0.15)',
           zIndex: 20,
@@ -114,7 +114,7 @@ const MessagePage: React.FC = () => {
           style={{
             width: '94%',
             padding: '10px',
-            marginBottom: '10px',
+            marginBottom: '8px',
             borderRadius: '6px',
             border: '1px solid #ccc',
             fontSize: '16px',
@@ -131,7 +131,7 @@ const MessagePage: React.FC = () => {
             padding: '10px',
             borderRadius: '6px',
             border: '1px solid #ccc',
-            marginBottom: '10px',
+            marginBottom: '6px',
             fontSize: '16px',
           }}
         />
@@ -140,7 +140,7 @@ const MessagePage: React.FC = () => {
           onClick={handleSubmit}
           style={{
             width: '100%',
-            padding: '12px',
+            padding: '8px',
             background: '#4F46E5',
             color: 'white',
             border: 'none',
