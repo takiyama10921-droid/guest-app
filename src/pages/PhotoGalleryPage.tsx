@@ -11,6 +11,11 @@ const photos: Photo[] = [
   { thumb: "/photos/thumb/IMG_6331.jpg", full: "/photos/full/IMG_6331.jpg" },
   { thumb: "/photos/thumb/IMG_6736.jpg", full: "/photos/full/IMG_6736.jpg" },
   { thumb: "/photos/thumb/IMG_6711.jpg", full: "/photos/full/IMG_6711.jpg" },
+  { thumb: "/photos/thumb/IMG_6676.jpg", full: "/photos/full/IMG_6676.jpg" },
+  { thumb: "/photos/thumb/IMG_6682.jpg", full: "/photos/full/IMG_6682.jpg" },
+  { thumb: "/photos/thumb/IMG_6685.jpg", full: "/photos/full/IMG_6685.jpg" },
+  { thumb: "/photos/thumb/IMG_6706.jpg", full: "/photos/full/IMG_6706.jpg" },
+  { thumb: "/photos/thumb/IMG_6679.jpg", full: "/photos/full/IMG_6679.jpg" },
 ];
 
 const PhotoGalleryPage: React.FC = () => {

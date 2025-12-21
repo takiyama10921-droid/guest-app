@@ -127,7 +127,7 @@ export function ReceptionSummary({ side }: Props) {
 
                   <div>{g.checkedin ? '✅' : '❌'}</div>
 
-                  <div>{g.giftReceivedBefore ? '💴' : '❌'}</div>
+                  <div>{g.giftReceivedBefore ? '✅' : '❌'}</div>
 
                   {/* お車代 */}
                   <div
@@ -138,7 +138,7 @@ export function ReceptionSummary({ side }: Props) {
                   >
                     {!g.hasTransportationGift && '―'}
                     {g.hasTransportationGift &&
-                      (g.transportationGiftGiven ? '🚗' : '❌')}
+                      (g.transportationGiftGiven ? '✅' : '❌')}
                   </div>
                 </div>
               );

@@ -10,77 +10,51 @@ import {
   writeBatch,
 } from "firebase/firestore";
 import { db } from "../firebase";
+import Papa from "papaparse";
 import type { User } from "../types/User";
 
-/* 初期データ投入（開発用） */
+// TRUE / FALSE → boolean 変換
+const toBool = (v: any): boolean =>
+  String(v).toLowerCase() === "true";
+
 export const seedGuests = async () => {
+  // ① CSV読み込み
+  const csvText = await fetch("/guests.csv").then((res) => res.text());
+
+  // ② CSVパース
+  const result = Papa.parse(csvText, {
+    header: true,
+    skipEmptyLines: true,
+  });
+
+  // ③ CSV → User 型へ変換（undefined防止）
+  const guests: User[] = (result.data as any[])
+    .filter((row) => row.name && row.code && row.side) // 最低限チェック
+    .map((row) => ({
+      name: row.name,
+      code: row.code,
+      checkedin: toBool(row.checkedin),
+      message: row.message ?? "",
+      seatNumber: row.seatNumber ?? "",
+      hasTransportationGift: toBool(row.hasTransportationGift),
+      transportationGiftGiven: toBool(row.transportationGiftGiven),
+      giftReceivedBefore: toBool(row.giftReceivedBefore),
+      side: row.side,
+    }));
+
+  // ④ Firestoreへ一括登録
   const batch = writeBatch(db);
   const guestCollection = collection(db, "guest");
 
-  const guests = [
-    {
-      name: '佐藤太郎',
-      code: 'TH01',
-      checkedin: false,
-      message: 'ようこそ！',
-      seatNumber: 'A-1',
-      hasTransportationGift: true,
-      transportationGiftGiven: false,
-      giftReceivedBefore: false,
-      side: 'groom',
-    },
-    {
-      name: '鈴木花子',
-      code: 'TH02',
-      checkedin: false,
-      message: '楽しんでください！',
-      seatNumber: 'A-2',
-      hasTransportationGift: false,
-      transportationGiftGiven: false,
-      giftReceivedBefore: true,
-      side: 'bride',
-    },
-    {
-      name: '田中一郎',
-      code: 'TH03',
-      checkedin: false,
-      message: 'おめでとうございます！',
-      seatNumber: 'A-3',
-      hasTransportationGift: false,
-      transportationGiftGiven: false,
-      giftReceivedBefore: true,
-      side: 'groom',
-    },
-    {
-      name: '高橋健',
-      code: 'TH04',
-      checkedin: false,
-      message: 'お越しいただきありがとうございます！',
-      seatNumber: 'A-4',
-      hasTransportationGift: false,
-      transportationGiftGiven: false,
-      giftReceivedBefore: false,
-      side: 'groom',
-    },
-    {
-      name: '伊藤美咲',
-      code: 'TH05',
-      checkedin: false,
-      message: 'どうぞごゆっくり！',
-      seatNumber: 'A-5',
-      hasTransportationGift: false,
-      transportationGiftGiven: false,
-      giftReceivedBefore: true,
-      side: 'bride',
-    },
-  ];
-
   guests.forEach((guest) => {
-    const docRef = doc(guestCollection);
+    // 🔽 code を documentId にする（重複防止・おすすめ）
+    const docRef = doc(guestCollection, guest.code);
     batch.set(docRef, guest);
   });
 
   await batch.commit();
+
+  console.log(`✅ ${guests.length} 件のゲストを登録しました`);
 };
 
 export default function ReceptionPage() {
@@ -183,7 +157,7 @@ export default function ReceptionPage() {
           </button>
         )} */}
 
-        {guest.hasTransportationGift &&(
+        {guest.hasTransportationGift && !guest.transportationGiftGiven &&(
           <button
             onClick={() => updateGuest({ transportationGiftGiven: true })}
           >
