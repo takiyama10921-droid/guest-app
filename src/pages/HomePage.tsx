@@ -1,12 +1,9 @@
 import Papa from "papaparse";
 import { Link } from "react-router-dom";
 import type { User } from "../types/User";
-import { collection, doc, writeBatch } from "firebase/firestore";
+import {doc, writeBatch } from "firebase/firestore";
 import { db } from "../firebase";
 
-// TRUE / FALSE → boolean 変換
-const toBool = (v: any): boolean =>
-  String(v).toLowerCase() === "true";
 
 export const seedGuests = async () => {
   // ① CSV読み込み
